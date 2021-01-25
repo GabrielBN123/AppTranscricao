@@ -1,0 +1,29 @@
+body {
+    background-color: #E0FFFF;
+}
+
+
+/* div com nome imagem pode ser muito genêrico, então tem que esplecificar mais, ex img_banner_inicio assim não ficara confuso mais tarde */
+
+.img_banner_formulaio {
+    height: 600px;
+    /* width: 1425px; */
+    opacity: 60%;
+}
+
+.titulo_formulario_culto {
+    text-align: center;
+    color: blue;
+}
+
+.footer {
+    text-align: center;
+    background-color: #4682B4;
+    color: white;
+    /* margin-top: 50px; */
+    height: 50px;
+    /* novos adicionados */
+    width: 100%;
+    padding: 10px 0;
+    position: absolute;
+}
