@@ -45,17 +45,17 @@
 
             switch ($load_form) {
                 case 'form_Recepcao':
-                    echo $load_form;
+                    // echo $load_form;
                     include('forms/recepcao.php');
                     break;
 
                 case 'form_Transcricao':
-                    echo $load_form;
+                    // echo $load_form;
                     include('forms/transcricao.php');
                     break;
 
                 case 'form_Pulpito':
-                    echo $load_form;
+                    // echo $load_form;
                     include('forms/leitura.php');
                     # code...
                     break;

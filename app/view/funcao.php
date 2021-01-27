@@ -20,7 +20,7 @@
     </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><i class="fas fa-arrow-circle-left"></i> Sair</a>
+            <a class="navbar-brand" href="../../"><i class="fas fa-arrow-circle-left"></i> Sair</a>
             <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button> -->
@@ -37,7 +37,7 @@
         <div class="row bg-light rounded cont_mobile">
             <div class="col-md-12">
                 <div class="row">
-                    <form action="carrega_form.php" method="post">
+                    <form action="carregaForm.php" method="post">
                         <div class="col-12 my-5 text-center btn_recep">
                             <input type="submit" id="form_Recepcao" name="btnSelecao" value="form_Recepcao" hidden>
                             <label for="form_Recepcao" style="width: 100%;">
