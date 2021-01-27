@@ -12,7 +12,7 @@
 <body>
     <div class="fundo">
     </div>
-    <div class="row h-100 painel_log_cadastro col-md-12 col-lg-4">
+    <div class="row h-100 painel_log_cadastro painel_log_login col-md-12 col-lg-4">
         <div class="corpo_cadastro tela_log_cad bg-light col-md-12">
             <div class="titulo my-5">
                 <h1 class="titulo_h1_cadastro">Cadastro de Instituição</h1>
