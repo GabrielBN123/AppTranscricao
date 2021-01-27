@@ -8,6 +8,11 @@
     <title>Cadastrar</title>
     <?php include('../controller/carregar_js_css.php'); ?>
 </head>
+<style>
+    body {
+        background-image: linear-gradient(10deg, rgb(4, 19, 41) 20%, rgb(10, 49, 100) 100%);
+    }
+</style>
 
 <body>
     <div class="fundo">
@@ -22,11 +27,11 @@
                     <div class="input_div">
                         <label for="foto" class="label_foto">
                             <div class="div_foto rounded-circle">
-                                <img src="<?php echo baseURl?>assets/img/user-regular.svg" alt=" " class="rounded-circle show_image_up" id="show_foto" alt="">
+                                <img src="<?php echo baseURl ?>assets/img/user-regular.svg" alt=" " class="rounded-circle show_image_up" id="show_foto" alt="">
                             </div>
                             Foto
                         </label>
-                        <input type="hidden" name="MAX_FILE_SIZE" value="99999999"/>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="99999999" />
                         <input type="file" class="input_foto" onchange="loadFile(event)" name="Foto" accept="image/x-png,image/gif,image/jpeg" id="foto">
                     </div>
                     <div class="input_div form-group">
@@ -41,6 +46,15 @@
                             <option selected value="1">Recepção</option>
                             <option value="2">Transcrição</option>
                             <option value="3">Pulpito</option>
+                        </select>
+                    </div>
+                    <div class="input_div form-group">
+                        <label for="atuacao" class="label_cadastro">Instituição</label>
+                        <br>
+                        <select class="form-select mt-2 form-select-lg" name="area_atuacao" id="atuacao" aria-label="Default select example">
+                            <option selected value="1">Asembleia</option>
+                            <option value="2">Outro 01</option>
+                            <option value="3">Outro 02</option>
                         </select>
                     </div>
                     Já é Cadastrado? <a href="../index.php">Entrar</a>
