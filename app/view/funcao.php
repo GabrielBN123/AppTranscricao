@@ -6,12 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sua Função</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <?php include('../controller/carregar_js_css.php'); ?>
+    <!-- <link rel="stylesheet" href="../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/all.css">
     <link rel="stylesheet" href="../assets/css/css.css">
-    <script src="../assets/assets/js/jquery-3.5.1.min.js"></script>
-    <script src="../assets/js/all.js"></script>
+    <script src="../assets/assets/js/jquery-3.5.1.min.js"></script> -->
+    <script src="../../assets/js/all.js"></script>
 </head>
 
 <body>

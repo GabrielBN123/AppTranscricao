@@ -1,5 +1,10 @@
 
-<?php define('baseURl', 'http://localhost/front/'); ?>
+<?php 
+
+// define('baseURl', 'http://localhost/front/'); 
+define('baseURl', '../../');
+
+?>
 
 <?php //baseURl . 'assets/css/bootstrap.css' ?>
 

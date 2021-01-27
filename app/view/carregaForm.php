@@ -8,11 +8,12 @@
     <meta charset="UTF-8">
     <meta name="author" content="Layssa Matos e Gabriel Batista" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/css_formulario.css">
-    <script src="../assets/js/jquery-3.5.1.min.js"></script>
-
+    <script src="../assets/js/jquery-3.5.1.min.js"></script> -->
+    <?php include('../controller/carregar_js_css.php'); ?>
+    <link rel="stylesheet" href="../../assets/css/css_formulario.css">
 
     <style>
         /* @media screen and (min-width: 1025px) {
@@ -60,9 +61,12 @@
                     break;
 
                 default:
-                    echo 'Nenhum formulário';
+                    include('forms/recepcao.php');
+                    // echo 'Nenhum formulário';
                     break;
             }
+        }else{
+            include('forms/recepcao.php');
         }
         ?>
         <!-- <div class="container">
