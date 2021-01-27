@@ -21,7 +21,7 @@ class Conexao
 
     public function conectar_banco()
     {
-        $host = 'localhost';
+        $host = 'localhost:8090';
         $nome_base = 'transc_bd';
         $user = 'root';
         $password = 'root';
@@ -29,6 +29,7 @@ class Conexao
         try {
             $conexao = new PDO("mysql:host = $host; dbname=$nome_base", $user, $password);
 
+            // Teste de Select para retornar os dados 
             // $select_all_user = $conexao->query('SELECT * from usuarios');
 
             // foreach ($select_all_user as $key) {
@@ -47,3 +48,5 @@ class Conexao
         return $conexao;
     }
 }
+// $teste = new Conexao;
+// $teste->conectar_banco();
