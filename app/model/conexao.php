@@ -3,31 +3,16 @@
 
 class Conexao
 {
-    // temporario
-
-
-
-
-    // temporario
-
-    // tipo procedural
-    // protected $conexao = mysqli_connect("$host", "$user", "$password", "$nome_base");
-    // protected $charset = mysqli_set_charset($conexao, "utf8");
-
-    // tipo orientado a obj
-    // Conectar banco de dados
-    // protected $conect = new mysqli($host, $user, $password, $nome_base);
-
+    protected $host = 'localhost:8090';
+    protected $nome_base = 'transc_bd';
+    protected $user = 'root';
+    protected $password = 'root';
 
     public function conectar_banco()
     {
-        $host = 'localhost:8090';
-        $nome_base = 'transc_bd';
-        $user = 'root';
-        $password = 'root';
 
         try {
-            $conexao = new PDO("mysql:host = $host; dbname=$nome_base", $user, $password);
+            $conexao = new PDO("mysql:host = $this->host; dbname=$this->nome_base", $this->user, $this->password);
 
             // Teste de Select para retornar os dados 
             // $select_all_user = $conexao->query('SELECT * from usuarios');

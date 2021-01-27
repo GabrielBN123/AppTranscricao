@@ -10,16 +10,23 @@ class CadastrarUsuario extends Conexao
     // variavel da classe Conexao
     // protected $conexao = $this->conect;
 
+    public function getEmail_usuario()
+    {
+        $nome = 'nomeTeste@gmail.com';
+
+        return $nome;
+    }
+
     public function getNome_usuario()
     {
-        $nome = null;
+        $nome = 'Nome';
 
         return $nome;
     }
 
     public function getSobrenome_usuario()
     {
-        $sobrenome = null;
+        $sobrenome = 'Teste';
 
         return $sobrenome;
     }
@@ -27,7 +34,7 @@ class CadastrarUsuario extends Conexao
     public function getArea_atua()
     {
 
-        $area_atua = null;
+        $area_atua = 1;
 
         return $area_atua;
     }
@@ -35,7 +42,7 @@ class CadastrarUsuario extends Conexao
     public function getFoto()
     {
 
-        $foto = null;
+        $foto = 'null';
 
         return $foto;
     }
@@ -43,14 +50,14 @@ class CadastrarUsuario extends Conexao
 
     public function setSenha()
     {
-        $senha = null;
+        $senha = 'senha123';
 
         return $senha;
     }
 
     public function getInstituicao()
     {
-        $instituicao = 123;
+        $instituicao = 1;
 
         return $instituicao;
     }
@@ -60,7 +67,13 @@ class CadastrarUsuario extends Conexao
     {
         // $Conexao = this->conectar_banco;
 
-        echo $this->getInstituicao();
+        echo $this->getEmail_usuario();
+        echo '<br>' . $this->getNome_usuario();
+        echo '<br>' . $this->getSobrenome_usuario();
+        echo '<br>' . $this->getArea_atua();
+        echo '<br>' . $this->getFoto();
+        echo '<br>' . $this->setSenha();
+        echo '<br>' . $this->getInstituicao();
 
         try {
             $conexao = $this->conectar_banco();
