@@ -22,7 +22,7 @@
                     <div class="input_div">
                         <label for="foto" class="label_foto">
                             <div class="div_foto rounded-circle">
-                                <img src="../assets/img/user-regular.svg" alt=" " class="rounded-circle show_image_up" id="show_foto" alt="">
+                                <img src="<?php echo baseURl?>assets/img/user-regular.svg" alt=" " class="rounded-circle show_image_up" id="show_foto" alt="">
                             </div>
                             Foto
                         </label>
