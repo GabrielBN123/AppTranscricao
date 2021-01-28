@@ -37,7 +37,7 @@ define('baseURl', '../../');
                         <br>
                         <input class="form-control mt-2 form-control-lg" name="nome" type="password" id="nome" placeholder="Senha" aria-label=".form-control-lg example">
                     </div>
-                    não possui Cadastro? <a href="view/cadastro.php">Cadastrar</a>
+                    não possui Cadastro? <a href="cadastro.php">Cadastrar</a>
                     <br><br>
                     <input type="submit" value="Entrar" class="input_btn">
                 </form>

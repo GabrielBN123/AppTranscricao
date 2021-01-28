@@ -6,7 +6,7 @@ class Conexao
     protected $host = 'localhost:8090';
     protected $nome_base = 'transc_bd';
     protected $user = 'root';
-    protected $password = 'root';
+    protected $password = '';
 
     public function conectar_banco()
     {

@@ -10,54 +10,72 @@ class CadastrarUsuario extends Conexao
     // variavel da classe Conexao
     // protected $conexao = $this->conect;
 
-    public function getEmail_usuario()
-    {
-        $nome = 'nomeTeste@gmail.com';
-
-        return $nome;
-    }
-
     public function getNome_usuario()
     {
-        $nome = 'Nome';
+        $nome = $_POST['nome'];
 
         return $nome;
     }
 
-    public function getSobrenome_usuario()
+    public function getEmail_usuario()
     {
-        $sobrenome = 'Teste';
 
-        return $sobrenome;
+        $email = $_POST['email'];
+
+        return $email;
     }
+
+    // public function getSobrenome_usuario()
+    // {
+    //     if (isset($_POST['sobrenome'])) {
+    //         $sobrenome = $_POST['sobrenome'];
+    //     } else {
+    //         $sobrenome = 'lastName';
+    //     }
+
+    //     return $sobrenome;
+    // }
 
     public function getArea_atua()
     {
-
-        $area_atua = 1;
+        $area_atua =  intval($_POST['area_atuacao']);
 
         return $area_atua;
     }
 
     public function getFoto()
     {
+        $imagem = $_FILES['Foto'];
 
-        $foto = 'null';
+        $nome_imagem = md5(uniqid(time())) . ".png";
 
-        return $foto;
+        return $nome_imagem;
     }
 
+    public function moveFoto()
+    {
+        $imagem = $_FILES['Foto'];
+        $nome_imagem = $this->getFoto();
+
+        // Caminho de onde ficará a imagem
+        $caminho_imagem = "../../assets/img/foto_usuario/teste/" . $nome_imagem;
+
+        // Faz o upload da imagem para seu respectivo caminho
+        move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
+    }
 
     public function setSenha()
     {
-        $senha = 'senha123';
+        $senha =  strtolower(preg_replace('/\s+/', '', $_POST['nome']));
 
         return $senha;
     }
 
     public function getInstituicao()
     {
-        $instituicao = 1;
+
+        // instituicao
+        $instituicao =  intval($_POST['instituicao']);
 
         return $instituicao;
     }
@@ -65,22 +83,31 @@ class CadastrarUsuario extends Conexao
 
     public function cadastra_usuario()
     {
-        // $Conexao = this->conectar_banco;
+        // $Conexao = $this->conectar_banco();
 
-        echo $this->getEmail_usuario();
-        echo '<br>' . $this->getNome_usuario();
-        echo '<br>' . $this->getSobrenome_usuario();
-        echo '<br>' . $this->getArea_atua();
-        echo '<br>' . $this->getFoto();
-        echo '<br>' . $this->setSenha();
-        echo '<br>' . $this->getInstituicao();
+        if (isset($_POST)) {
+            $nomeUsuario = $this->getNome_usuario();
+            // echo '<br>' . $this->getSobrenome_usuario();
+            $areaAtua = $this->getArea_atua();
+            $instituicao = $this->getInstituicao();
+            $foto = $this->getFoto();
+            $senha = $this->setSenha();
+            $email = $this->getEmail_usuario();
+        }
 
         try {
             $conexao = $this->conectar_banco();
+            
+            $insert = $conexao->query("INSERT INTO usuarios (nome_usuario, area_atuaID, instituicaoID, foto_usuario, senha_usuario, email_usuario) 
+            VALUES ('$nomeUsuario', $areaAtua, $instituicao, '$foto', '$senha',  '$email')");
+            // VALUES ('Gabriel', 1, 1, 'foto.png', 'Gabriel',  'gabriel@Hotmail')");
+            
+            $this->moveFoto();
+
+            header('location: ../view/login.php');
         } catch (PDOException $e) {
             echo 'Erro: ' . $e->getMessage();
         }
-
 
 
         // if (isset($_POST)) {

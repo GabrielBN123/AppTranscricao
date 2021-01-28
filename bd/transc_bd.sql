@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1
--- http://www.phpmyadmin.net
+-- version 5.0.4
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: 25-Jan-2021 às 04:32
--- Versão do servidor: 5.7.11
--- PHP Version: 7.0.3
+-- Host: 127.0.0.1
+-- Tempo de geração: 28-Jan-2021 às 05:21
+-- Versão do servidor: 10.4.17-MariaDB
+-- versão do PHP: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `transc_bd`
+-- Banco de dados: `transc_bd`
 --
 
 -- --------------------------------------------------------
@@ -94,46 +95,47 @@ INSERT INTO `instituicao` (`instituicaoID`, `nomeInstituicao`, `decricao`) VALUE
 CREATE TABLE `usuarios` (
   `userID` int(11) NOT NULL,
   `nome_usuario` varchar(45) NOT NULL,
-  `sobrenome_usuario` varchar(100) NOT NULL,
+  `sobrenome_usuario` varchar(100) DEFAULT NULL,
   `area_atuaID` int(11) NOT NULL,
   `instituicaoID` int(11) NOT NULL,
   `foto_usuario` varchar(255) NOT NULL,
   `senha_usuario` varchar(25) NOT NULL DEFAULT '123456',
-  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `data_cadastro` timestamp NOT NULL DEFAULT current_timestamp(),
+  `email_usuario` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`userID`, `nome_usuario`, `sobrenome_usuario`, `area_atuaID`, `instituicaoID`, `foto_usuario`, `senha_usuario`, `data_cadastro`) VALUES
-(1, 'Gabriel', 'Batista', 1, 1, 'C:\\Users\\usuario\\AppData\\Local\\Temp\\php4914.tmp', '123456', '2021-01-21 21:26:59');
+INSERT INTO `usuarios` (`userID`, `nome_usuario`, `sobrenome_usuario`, `area_atuaID`, `instituicaoID`, `foto_usuario`, `senha_usuario`, `data_cadastro`, `email_usuario`) VALUES
+(1, 'Gabriel', 'Batista', 1, 1, 'C:\\Users\\usuario\\AppData\\Local\\Temp\\php4914.tmp', '123456', '2021-01-21 21:26:59', '');
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `campo`
+-- Índices para tabela `campo`
 --
 ALTER TABLE `campo`
   ADD PRIMARY KEY (`campoID`);
 
 --
--- Indexes for table `formulario`
+-- Índices para tabela `formulario`
 --
 ALTER TABLE `formulario`
   ADD PRIMARY KEY (`formID`),
   ADD KEY `inscritorID` (`inscritorID`);
 
 --
--- Indexes for table `instituicao`
+-- Índices para tabela `instituicao`
 --
 ALTER TABLE `instituicao`
   ADD PRIMARY KEY (`instituicaoID`);
 
 --
--- Indexes for table `usuarios`
+-- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`userID`),
@@ -141,31 +143,35 @@ ALTER TABLE `usuarios`
   ADD KEY `instituicaoID` (`instituicaoID`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `campo`
+-- AUTO_INCREMENT de tabela `campo`
 --
 ALTER TABLE `campo`
   MODIFY `campoID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
--- AUTO_INCREMENT for table `formulario`
+-- AUTO_INCREMENT de tabela `formulario`
 --
 ALTER TABLE `formulario`
   MODIFY `formID` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `instituicao`
+-- AUTO_INCREMENT de tabela `instituicao`
 --
 ALTER TABLE `instituicao`
   MODIFY `instituicaoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
--- Constraints for dumped tables
+-- Restrições para despejos de tabelas
 --
 
 --
@@ -180,6 +186,7 @@ ALTER TABLE `formulario`
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`area_atuaID`) REFERENCES `campo` (`campoID`),
   ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`instituicaoID`) REFERENCES `instituicao` (`instituicaoID`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

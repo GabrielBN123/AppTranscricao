@@ -23,7 +23,8 @@
                 <h1 class="titulo_h1_cadastro">Cadastro</h1>
             </div>
             <div class="form my-5 mx-5">
-                <form action="../controller/cadastrar.php" method="POST" enctype="multipart/form-data">
+                <form action="../model/cadastrar.php" method="POST" enctype="multipart/form-data">
+                <!-- <form method="POST" enctype="multipart/form-data"> -->
                     <div class="input_div">
                         <label for="foto" class="label_foto">
                             <div class="div_foto rounded-circle">
@@ -33,6 +34,11 @@
                         </label>
                         <input type="hidden" name="MAX_FILE_SIZE" value="99999999" />
                         <input type="file" class="input_foto" onchange="loadFile(event)" name="Foto" accept="image/x-png,image/gif,image/jpeg" id="foto">
+                    </div>
+                    <div class="input_div form-group">
+                        <label for="email" class="label_cadastro">E-mail</label>
+                        <br>
+                        <input class="form-control mt-2 form-control-lg" name="email" type="text" id="email" placeholder="E-mail" aria-label=".form-control-lg example">
                     </div>
                     <div class="input_div form-group">
                         <label for="nome" class="label_cadastro">Nome</label>
@@ -49,9 +55,9 @@
                         </select>
                     </div>
                     <div class="input_div form-group">
-                        <label for="atuacao" class="label_cadastro">Instituição</label>
+                        <label for="instituicao" class="label_cadastro">Instituição</label>
                         <br>
-                        <select class="form-select mt-2 form-select-lg" name="area_atuacao" id="atuacao" aria-label="Default select example">
+                        <select class="form-select mt-2 form-select-lg" name="instituicao" id="instituicao" aria-label="Default select example">
                             <option selected value="1">Asembleia</option>
                             <option value="2">Outro 01</option>
                             <option value="3">Outro 02</option>
@@ -64,7 +70,7 @@
             </div>
         </div>
     </div>
-    <script src="../js/js_cadastro.js"></script>
+    <script src="../../assets/js/js_cadastro.js"></script>
 </body>
 
 </html>
