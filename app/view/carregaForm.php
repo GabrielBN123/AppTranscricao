@@ -40,6 +40,7 @@
     <!--formulário-->
     <div class="tudo">
         <?php
+        $idUsuario = $_POST['id'];
         if (isset($_POST['btnSelecao'])) {
             $load_form = $_POST['btnSelecao'];
 
@@ -56,7 +57,7 @@
 
                 case 'form_Pulpito':
                     // echo $load_form;
-                    include('forms/leitura.php');
+                    include('forms/pulpito.php');
                     # code...
                     break;
 

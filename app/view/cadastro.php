@@ -63,7 +63,7 @@
                             <option value="3">Outro 02</option>
                         </select>
                     </div>
-                    Já é Cadastrado? <a href="../index.php">Entrar</a>
+                    Já é Cadastrado? <a href="login.php">Entrar</a>
                     <br><br>
                     <input type="submit" value="Cadastrar" class="input_btn">
                 </form>

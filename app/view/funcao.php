@@ -7,13 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sua Função</title>
     <?php include('../controller/carregar_js_css.php'); ?>
-    <!-- <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/all.css">
-    <link rel="stylesheet" href="../assets/css/css.css">
-    <script src="../assets/assets/js/jquery-3.5.1.min.js"></script> -->
     <script src="../../assets/js/all.js"></script>
 </head>
+
+<?php
+
+$usuarioID = $_COOKIE['ID'];
+
+if (isset($usuarioID) == false) {
+    header("Location:../view/login.php");
+}
+?>
 
 <body>
     <div class="fundo_index">
@@ -21,23 +25,14 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="../../"><i class="fas fa-arrow-circle-left"></i> Sair</a>
-            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button> -->
-            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                </ul>
-            </div> -->
         </div>
     </nav>
     <div class="container pt-4">
         <div class="row bg-light rounded cont_mobile">
             <div class="col-md-12">
                 <div class="row">
-                    <form action="carregaForm.php" method="post">
+                    <form action="../view/carregaForm.php" method="post">
+                    <input type="number" name="id" value="<?php echo $usuarioID;?>" hidden>
                         <div class="col-12 my-5 text-center btn_recep">
                             <input type="submit" id="form_Recepcao" name="btnSelecao" value="form_Recepcao" hidden>
                             <label for="form_Recepcao" style="width: 100%;">

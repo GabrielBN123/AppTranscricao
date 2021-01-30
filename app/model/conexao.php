@@ -26,6 +26,10 @@ class Conexao
             //     echo  'senha_usuario: ' . $key['senha_usuario'] . '<br>';
             //     echo  'data_cadastro: ' . $key['data_cadastro'] . '<br>';
             // }
+            // foreach ($select_all_user as $key) {
+            // var_dump((array) $select_all_user);
+            // }
+            // echo $select_all_user->rowCount();
         } catch (PDOException $e) {
             echo "erro: " . $e->getMessage() . "<br>";
         }
@@ -33,5 +37,5 @@ class Conexao
         return $conexao;
     }
 }
-// $teste = new Conexao;
-// $teste->conectar_banco();
+$teste = new Conexao;
+$teste->conectar_banco();

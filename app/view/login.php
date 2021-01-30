@@ -26,16 +26,16 @@ define('baseURl', '../../');
                 <h1 class="titulo_h1_cadastro">Entrar</h1>
             </div>
             <div class="form my-5 mx-5">
-                <form action="">
+                <form action="../model/login.php" method="POST">
                     <div class="input_div form-group">
-                        <label for="nome" class="label_cadastro">Nome</label>
+                        <label for="nome" class="label_cadastro">E-mail</label>
                         <br>
-                        <input class="form-control mt-2 form-control-lg" name="nome" type="text" id="nome" placeholder="nome" aria-label=".form-control-lg example">
+                        <input class="form-control mt-2 form-control-lg" name="email" type="text" id="nome" placeholder="Email" aria-label=".form-control-lg example">
                     </div>
                     <div class="input_div form-group">
                         <label for="Senha" class="label_cadastro">Senha</label>
                         <br>
-                        <input class="form-control mt-2 form-control-lg" name="nome" type="password" id="nome" placeholder="Senha" aria-label=".form-control-lg example">
+                        <input class="form-control mt-2 form-control-lg" name="senha" type="password" id="nome" placeholder="Senha" aria-label=".form-control-lg example">
                     </div>
                     não possui Cadastro? <a href="cadastro.php">Cadastrar</a>
                     <br><br>
