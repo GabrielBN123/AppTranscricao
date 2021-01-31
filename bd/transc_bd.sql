@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Jan-2021 às 20:23
+-- Tempo de geração: 31-Jan-2021 às 09:46
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.1
 
@@ -64,6 +64,13 @@ CREATE TABLE `formulario` (
   `inscritorID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `formulario`
+--
+
+INSERT INTO `formulario` (`formID`, `nomeCliente`, `apresentacao`, `aviso`, `cartaApresentacao`, `acaoGraca`, `pedidoOracao`, `apresentacaoRN`, `inscritorID`) VALUES
+(1, NULL, 'teste primeiro', '145', '', '77777', NULL, 'nenhum', 9);
+
 -- --------------------------------------------------------
 
 --
@@ -106,9 +113,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`userID`, `nome_usuario`, `sobrenome_usuario`, `area_atuaID`, `instituicaoID`, `foto_usuario`, `senha_usuario`, `data_cadastro`, `email_usuario`) VALUES
-(1, 'Gabriel', 'Batista', 1, 1, 'C:\\Users\\usuario\\AppData\\Local\\Temp\\php4914.tmp', '123456', '2021-01-21 21:26:59', ''),
-(5, 'Gabriel', 'Batista', 1, 1, 'C:\\Users\\usuario\\AppData\\Local\\Temp\\php4914.tmp', '123456', '2021-01-21 21:26:59', ''),
-(6, 'Gabriel', NULL, 1, 1, 'f78d8622376018ed605255f6921ce429.png', 'gabriel', '2021-01-30 05:51:13', 'gabrielbdsn12@hotmail.com');
+(6, 'Gabriel', NULL, 1, 1, 'f78d8622376018ed605255f6921ce429.png', 'Gabriel', '2021-01-30 05:51:13', 'gabrielbdsn12@hotmail.com'),
+(9, 'Jhonas', NULL, 1, 1, 'b8a2639b734fd39af0229e0e79ff4717.png', 'jhonas', '2021-01-31 04:01:40', 'gabrielgaara2013@gmail.com');
 
 --
 -- Índices para tabelas despejadas
@@ -155,7 +161,7 @@ ALTER TABLE `campo`
 -- AUTO_INCREMENT de tabela `formulario`
 --
 ALTER TABLE `formulario`
-  MODIFY `formID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `formID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `instituicao`
@@ -167,7 +173,7 @@ ALTER TABLE `instituicao`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para despejos de tabelas
