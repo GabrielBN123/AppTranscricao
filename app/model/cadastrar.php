@@ -10,106 +10,124 @@ class CadastrarUsuario extends Conexao
     // variavel da classe Conexao
     // protected $conexao = $this->conect;
 
-    public function getNome_usuario()
+    private $nome = null;
+    private $area_atua = null;
+    private $instituicao = null;
+    private $senha = null;
+    private $email = null;
+    private $nome_imagem = null;
+
+
+    public function setNome($nome)
     {
-        $nome = $_POST['nome'];
+        $this->nome = $nome;
 
         return $nome;
     }
 
-    public function getEmail_usuario()
+    public function setArea($area_atua)
     {
-
-        $email = $_POST['email'];
-
-        return $email;
+        $this->area_atua = $area_atua;
     }
 
-    // public function getSobrenome_usuario()
-    // {
-    //     if (isset($_POST['sobrenome'])) {
-    //         $sobrenome = $_POST['sobrenome'];
-    //     } else {
-    //         $sobrenome = 'lastName';
-    //     }
-
-    //     return $sobrenome;
-    // }
-
-    public function getArea_atua()
+    public function setInstituicao($instituicao)
     {
-        $area_atua =  intval($_POST['area_atuacao']);
+        $this->instituicao =  intval( $instituicao);
+    }
 
-        return $area_atua;
+    public function setFoto()
+    {
+        $this->nome_imagem = md5(uniqid(time())) . "." . 'png';;
+    }
+
+    public function setSenha()
+    {
+        $this->senha = strtolower($this->nome);
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    // passa os dados
+    public function getNome()
+    {
+        return  $this->nome;
+    }
+
+    public function getArea()
+    {
+        return  $this->area_atua;
+    }
+
+    public function getInstituicao()
+    {
+        return  $this->instituicao;
     }
 
     public function getFoto()
     {
-        $imagem = $_FILES['Foto'];
+        return  $this->nome_imagem;
+    }
 
-        $nome_imagem = md5(uniqid(time())) . ".png";
+    public function getSenha()
+    {
+        return  $this->senha;
+    }
 
-        return $nome_imagem;
+    public function getEmail()
+    {
+        return  $this->email;
     }
 
     public function moveFoto()
     {
         $imagem = $_FILES['Foto'];
-        $nome_imagem = $this->getFoto();
 
-        // Caminho de onde ficará a imagem
-        $caminho_imagem = "../../assets/img/foto_usuario/teste/" . $nome_imagem;
+        $caminho_imagem = "../../assets/img/foto_usuario/teste/" . $this->nome_imagem;
 
-        // Faz o upload da imagem para seu respectivo caminho
         move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
     }
 
-    public function setSenha()
-    {
-        $senha =  strtolower(preg_replace('/\s+/', '', $_POST['nome']));
-
-        return $senha;
-    }
-
-    public function getInstituicao()
-    {
-
-        // instituicao
-        $instituicao =  intval($_POST['instituicao']);
-
-        return $instituicao;
-    }
-
-
     public function cadastra_usuario()
     {
-        // $Conexao = $this->conectar_banco();
 
-        if (isset($_POST)) {
-            $nomeUsuario = $this->getNome_usuario();
-            // echo '<br>' . $this->getSobrenome_usuario();
-            $areaAtua = $this->getArea_atua();
-            $instituicao = $this->getInstituicao();
-            $foto = $this->getFoto();
-            $senha = $this->setSenha();
-            $email = $this->getEmail_usuario();
-        }
+        if ($this->getNome() != null && $this->getEmail() != null) {
+            echo 'Foto: ' . $this->getFoto() . '<br>';
+            try {
+                $insert = $this->conexao()->prepare("INSERT INTO usuarios (nome_usuario, area_atuaID, instituicaoID, foto_usuario, senha_usuario, email_usuario)
+                    VALUES (:nome, :areaAtua, :instituto, :foto, :senha, :email)"
+                );
+                $insert->bindValue(':nome', $this->getNome(), PDO::PARAM_STR);
+                $insert->bindValue(':areaAtua', $this->getArea(), PDO::PARAM_STR);
+                $insert->bindValue(':instituto', $this->getInstituicao(), PDO::PARAM_STR);
+                $insert->bindValue(':foto', $this->getFoto(), PDO::PARAM_STR);
+                $insert->bindValue(':senha', $this->getSenha(), PDO::PARAM_STR);
+                $insert->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
 
-        try {
-            $conexao = $this->conectar_banco();
-            
-            $insert = $conexao->query("INSERT INTO usuarios (nome_usuario, area_atuaID, instituicaoID, foto_usuario, senha_usuario, email_usuario) 
-            VALUES ('$nomeUsuario', $areaAtua, $instituicao, '$foto', '$senha',  '$email')");
-            // VALUES ('Gabriel', 1, 1, 'foto.png', 'Gabriel',  'gabriel@Hotmail')");
-            
-            $this->moveFoto();
-
-            header('location: ../view/login.php');
-        } catch (PDOException $e) {
-            echo 'Erro: ' . $e->getMessage();
+                if ($insert->execute()) {
+                    echo 'Inserido com Sucesso';
+                    $this->moveFoto();
+                    header('location: ../view/login.php');
+                } else {
+                    echo 'Não cadastrado, Favor Tentar Novamente!';
+                }
+                // header('location: ../view/login.php');
+            } catch (PDOException $e) {
+                echo 'Erro: ' . $e->getMessage();
+            }
+        } else {
+            echo 'Vazio';
         }
     }
 }
 
 $cadastrar = new CadastrarUsuario;
+$cadastrar->setNome($_POST['nome']);
+$cadastrar->setArea($_POST['area_atuacao']);
+$cadastrar->setInstituicao($_POST['instituicao']);
+$cadastrar->setEmail($_POST['email']);
+$cadastrar->setFoto();
+$cadastrar->setSenha();
 $cadastrar->cadastra_usuario();

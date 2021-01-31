@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Jan-2021 às 05:21
+-- Tempo de geração: 30-Jan-2021 às 20:23
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.1
 
@@ -56,14 +56,11 @@ CREATE TABLE `formulario` (
   `formID` int(11) NOT NULL,
   `nomeCliente` varchar(60) DEFAULT NULL,
   `apresentacao` varchar(255) DEFAULT NULL,
-  `felicitacoes` varchar(255) DEFAULT NULL,
-  `pedidoOracao` int(120) NOT NULL,
-  `pedidosLouvor` int(60) DEFAULT NULL,
-  `acoesGraca` varchar(255) DEFAULT NULL,
-  `testemunho` varchar(120) DEFAULT NULL,
-  `carta_recomendacao` varchar(255) DEFAULT NULL,
-  `apresentacaoRN` varchar(120) DEFAULT NULL,
-  `avisos` varchar(120) DEFAULT NULL,
+  `aviso` varchar(500) DEFAULT NULL,
+  `cartaApresentacao` varchar(500) DEFAULT NULL,
+  `acaoGraca` varchar(500) DEFAULT NULL,
+  `pedidoOracao` varchar(500) DEFAULT NULL,
+  `apresentacaoRN` varchar(500) DEFAULT NULL,
   `inscritorID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -109,7 +106,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`userID`, `nome_usuario`, `sobrenome_usuario`, `area_atuaID`, `instituicaoID`, `foto_usuario`, `senha_usuario`, `data_cadastro`, `email_usuario`) VALUES
-(1, 'Gabriel', 'Batista', 1, 1, 'C:\\Users\\usuario\\AppData\\Local\\Temp\\php4914.tmp', '123456', '2021-01-21 21:26:59', '');
+(1, 'Gabriel', 'Batista', 1, 1, 'C:\\Users\\usuario\\AppData\\Local\\Temp\\php4914.tmp', '123456', '2021-01-21 21:26:59', ''),
+(5, 'Gabriel', 'Batista', 1, 1, 'C:\\Users\\usuario\\AppData\\Local\\Temp\\php4914.tmp', '123456', '2021-01-21 21:26:59', ''),
+(6, 'Gabriel', NULL, 1, 1, 'f78d8622376018ed605255f6921ce429.png', 'gabriel', '2021-01-30 05:51:13', 'gabrielbdsn12@hotmail.com');
 
 --
 -- Índices para tabelas despejadas
@@ -168,7 +167,7 @@ ALTER TABLE `instituicao`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restrições para despejos de tabelas

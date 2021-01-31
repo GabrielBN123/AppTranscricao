@@ -8,10 +8,6 @@
     <meta charset="UTF-8">
     <meta name="author" content="Layssa Matos e Gabriel Batista" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/css_formulario.css">
-    <script src="../assets/js/jquery-3.5.1.min.js"></script> -->
     <?php include('../controller/carregar_js_css.php'); ?>
     <link rel="stylesheet" href="../../assets/css/css_formulario.css">
 
@@ -29,18 +25,38 @@
     <!-- integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="../assets/img/assembleia-de-deus-logo-5B9F4FA7AB-seeklogo.com.ico" />
+    <link rel="shortcut icon" href="../../assets/img/assembleia-de-deus-logo-5B9F4FA7AB-seeklogo.com.ico" />
     <!-- <title>Formulário</title> -->
 
 </head>
 
+<?php
+
+session_start();
+
+if ((!isset($_SESSION['id']) == true) && (!isset($_SESSION['nome_usuario']) == true)) {
+
+    unset($_SESSION['id']);
+    unset($_SESSION['nome_usuario']);
+
+    header("Location:../view/login.php");
+}
+
+$usuarioID = $_SESSION['id'];
+$nome_usuario = $_SESSION['nome_usuario'];
+
+?>
 
 
 <body>
     <!--formulário-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../model/logout.php"><i class="fas fa-arrow-circle-left"></i> Sair</a>
+        </div>
+    </nav>
     <div class="tudo">
         <?php
-        $idUsuario = $_POST['id'];
         if (isset($_POST['btnSelecao'])) {
             $load_form = $_POST['btnSelecao'];
 
@@ -66,7 +82,7 @@
                     // echo 'Nenhum formulário';
                     break;
             }
-        }else{
+        } else {
             include('forms/recepcao.php');
         }
         ?>

@@ -1,41 +1,33 @@
 <?php
 
+//namespace app\model\Conexao;
 
 class Conexao
 {
-    protected $host = 'localhost:8090';
-    protected $nome_base = 'transc_bd';
-    protected $user = 'root';
-    protected $password = '';
 
-    public function conectar_banco()
+    private $c = [
+        'HOST'=>'localhost',
+        'PORT'=>3307,
+        'USER'=>'root',
+        'PASS'=>'',
+        'DBNAME'=>'transc_bd',
+        'OPTIONS'=> [
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ]
+    ];
+
+    private $pdo = null;
+
+    public function conexao()
     {
-
-        try {
-            $conexao = new PDO("mysql:host = $this->host; dbname=$this->nome_base", $this->user, $this->password);
-
-            // Teste de Select para retornar os dados 
-            // $select_all_user = $conexao->query('SELECT * from usuarios');
-
-            // foreach ($select_all_user as $key) {
-            //     echo 'userID: ' . $key['userID'] . '<br>';
-            //     echo  'nome_usuario: ' . $key['nome_usuario'] . '<br>';
-            //     echo  'sobrenome_usuario: ' . $key['sobrenome_usuario'] . '<br>';
-            //     echo  'area_atuaID: ' . $key['area_atuaID'] . '<br>';
-            //     echo  'foto_usuario: ' . $key['foto_usuario'] . '<br>';
-            //     echo  'senha_usuario: ' . $key['senha_usuario'] . '<br>';
-            //     echo  'data_cadastro: ' . $key['data_cadastro'] . '<br>';
-            // }
-            // foreach ($select_all_user as $key) {
-            // var_dump((array) $select_all_user);
-            // }
-            // echo $select_all_user->rowCount();
-        } catch (PDOException $e) {
-            echo "erro: " . $e->getMessage() . "<br>";
+        try{
+            $this->pdo = new PDO('mysql:host='.$this->c['HOST'].';port='.$this->c['PORT'].';dbname='.$this->c['DBNAME'], $this->c['USER'], $this->c['PASS'], $this->c['OPTIONS']);
+            return $this->pdo;
+        }catch(PDOException $e){
+            echo 'Erro: '.$e->getMessage();
         }
-
-        return $conexao;
     }
+
 }
-$teste = new Conexao;
-$teste->conectar_banco();

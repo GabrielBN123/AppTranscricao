@@ -5,7 +5,7 @@
         <div class="col-md-12 p-4 bg-light  rounded  corpo_form">
             <div class="col-md-12 col-lg-12">
                 <div class="col-md-12">
-                    <form method="post" action="../../model/cadastroFormulario.php" class="needs-validation" novalidate>
+                    <form method="post" action="../model/cadastroFormulario.php" class="needs-validation" novalidate>
                         <div class="row">
                             <input type="number" name="idUsuario" id="" value="<?php echo $idUsuario; ?>" hidden>
                             <div class="col-md-12 resp_12 col-lg-6 mb-3">

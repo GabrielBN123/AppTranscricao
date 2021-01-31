@@ -2,70 +2,74 @@
 
 require("conexao.php");
 
-// $email = $_POST['email'];
-// $senha = ($_POST['senha']);
 
 class Login extends Conexao
 {
+    private $email = null;
+    private $senha = null;
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    public function setSenha($senha)
+    {
+        $this->senha = $senha;
+    }
+
     public function getEmail()
     {
-        $email = $_POST['email'];
-
-        return $email;
-
+        return $this->email;
     }
 
     public function getSenha()
     {
-        $senha = ($_POST['senha']);
-
-        return $senha;
+        return $this->senha;
     }
 
-    
     public function verifica()
     {
-        if (isset($_POST)) {
-            $email = $this->getEmail();
-            $senha = $this->getSenha();
-            
+        if ($this->getEmail() != null && $this->getSenha() != null) {
             try {
-                $conexao = $this->conectar_banco();
-                
-                $select = $conexao->query("SELECT * FROM usuarios WHERE senha_usuario = '$senha' AND email_usuario = '$email' ");
-                
-                // if ($select->num_rows <= 0){
-                if ($select->rowCount() <= 0){
-                ?>
-                <script language='javascript' type='text/javascript'> 
-                        alert('E-mail e/ou senha incorretos');
-                        window.location.href='../view/login.php';
-                </script>
-                <?php
-                die();
-              }else{
-                  foreach ($select as $key) {
-                      $nomeUsuario = $key['nome_usuario'];
-                      $id = $key['userID'];
-                      $areaAtua = $key['area_atuaID'];
-                      $instituicao = $key['instituicaoID'];
+                session_start();
+                $select = $this->conexao()->prepare('SELECT * FROM usuarios WHERE email_usuario=:email and binary senha_usuario=:senha');
+                $select->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
+                $select->bindValue(':senha', $this->getSenha(), PDO::PARAM_STR);
+                if ($select->execute() && count($select->fetchAll()) > 0) {
+                    echo 'Logado com sucesso!';
+
+                    $select->execute();
+
+                    foreach ($select as $key) {
+                        $nome = $key['nome_usuario'];
+                        $ID = $key['userID'];
+                        $atuacao = $key['area_atuaID'];
                     }
-                    setcookie("ID", $id);
-                    // echo $_COOKIE['ID'];
-                    // header("Location: ../view/funcao.php");
-                    include('../view/funcao.php');
+                    $_SESSION['id'] = $ID;
+                    $_SESSION['nome_usuario'] = $nome;
+
+                    // echo $_SESSION['id'] . '<br>';
+                    // echo $_SESSION['nome_usuario'];
+
+                    header('location: ../view/funcao.php');
+                } else {
+                    echo 'Usuário não encontrado!';
                 }
-            }catch(PDOException $e){
-                
-                echo 'Erro: ' . $e->getMessage();
+            } catch (PDOException $e) {
+                echo $e->getMessage();
             }
-        }else{
-            echo 'Erro sem POST detectado';
+        } else {
+            echo 'Login ou senha vazios.';
+            echo "<br> Email    : " . $this->getEmail();
+            echo "<br> POST Email: " . $_POST['email'];
+            echo "<br> Senha: " . $this->getSenha();
+            echo "<br> POST Senha: " . $_POST['senha'];
         }
     }
-
 }
-$login = new Login;
-$login->verifica();
 
-?>
+$login = new Login();
+$login->setEmail($_POST['email']);
+$login->setSenha($_POST['senha']);
+$login->verifica();

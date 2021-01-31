@@ -11,12 +11,25 @@
 </head>
 
 <?php
+session_start();
 
-$usuarioID = $_COOKIE['ID'];
+    // echo $_SESSION['id'];
+    // echo $_SESSION['nome_usuario'];
 
-if (isset($usuarioID) == false) {
+if ((!isset($_SESSION['id']) == true) && (!isset($_SESSION['nome_usuario']) == true)) {
+    
+    unset($_SESSION['id']);
+    unset($_SESSION['nome_usuario']);
+
     header("Location:../view/login.php");
 }
+
+$usuarioID = $_SESSION['id'];
+$nome_usuario = $_SESSION['nome_usuario'];
+
+
+// echo 'ID: ' . $usuarioID . ' . Nome: ' .$nome_usuario; 
+
 ?>
 
 <body>
@@ -24,7 +37,7 @@ if (isset($usuarioID) == false) {
     </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../../"><i class="fas fa-arrow-circle-left"></i> Sair</a>
+            <a class="navbar-brand" href="../model/logout.php"><i class="fas fa-arrow-circle-left"></i> Sair</a>
         </div>
     </nav>
     <div class="container pt-4">
@@ -32,7 +45,7 @@ if (isset($usuarioID) == false) {
             <div class="col-md-12">
                 <div class="row">
                     <form action="../view/carregaForm.php" method="post">
-                    <input type="number" name="id" value="<?php echo $usuarioID;?>" hidden>
+                        <input type="number" name="id" value="" hidden>
                         <div class="col-12 my-5 text-center btn_recep">
                             <input type="submit" id="form_Recepcao" name="btnSelecao" value="form_Recepcao" hidden>
                             <label for="form_Recepcao" style="width: 100%;">

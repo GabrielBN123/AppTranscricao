@@ -8,102 +8,109 @@ echo 'teste';
 class CadastrarFormulario extends Conexao
 {
 
+    private $idUsuario = null;
+    private $apresentacao = null;
+    private $aviso = null;
+    private $cartaApresenta = null;
+    private $acaoGraca = null;
+    private $pedidoOracao = null;
+    private $apresentaRN = null;
+
+    public function setIdUsuario($idUsuario)
+    {
+        $this->idUsuario = $idUsuario;
+    }
+
+    public function setApresentacao($apresentacao)
+    {
+        $this->apresentacao = $apresentacao;
+    }
+
+    public function setAvisos($aviso)
+    {
+        $this->aviso = $aviso;
+    }
+
+    public function setCartaApresentacao($cartaApresenta)
+    {
+        $this->cartaApresenta = $cartaApresenta;
+    }
+
+    public function setAcaoGraca($acaoGraca)
+    {
+        $this->acaoGraca = $acaoGraca;
+    }
+
+    public function setPedidoOracao($pedidoOracao)
+    {
+        $this->pedidoOracao = $pedidoOracao;
+    }
+
+    public function setApresentaRN($apresentaRN)
+    {
+        $this->apresentaRN = $apresentaRN;
+    }
+
+
     public function getIdUsuario()
     {
-        $idUser = intval($_POST['idUsuario']);
-
-        return $idUser;
+        return $this->idUsuario;
     }
 
     public function getApresentacao()
     {
-        if (isset($_POST['apresentacao'])) {
-            $apresentacao = $_POST['apresentacao'];
-        } else {
-            $apresentacao = null;
-        }
-
-        return $apresentacao;
+        return $this->apresentacao;
     }
 
     public function getAviso()
     {
-
-        if (isset($_POST['aviso'])) {
-            $aviso = $_POST['aviso'];
-        } else {
-            $aviso = null;
-        }
-
-        return $aviso;
+        return $this->aviso;
     }
 
     public function getCartaApresentacao()
     {
-        if (isset($_POST['cartaApp'])) {
-            $cartaApp =  $_POST['cartaApp'];
-        } else {
-            $cartaApp = null;
-        }
-
-        return $cartaApp;
+        return $this->cartaApresenta;
     }
 
     public function getAcaoGracas()
     {
-        if (isset($_POST['acaoGraca'])) {
-            $acaoGraca =  $_POST['acaoGraca'];
-        } else {
-            $acaoGraca = null;
-        }
-
-        return $acaoGraca;
+        return $this->acaoGraca;
     }
 
     public function getPedidoOracao()
     {
-        if (isset($_POST['pedidoOracao'])) {
-            $pedidoOracao = $_FILES['pedidoOracao'];;
-        } else {
-            $pedidoOracao = null;
-        }
-
-        return $pedidoOracao;
+        return $this->pedidoOracao;
     }
 
     public function getApresentacaoRN()
     {
-        if (isset($_POST['apresentacaoRN'])) {
-            $appRN = $_POST['apresentacaoRN'];
-        } else {
-            $appRN = null;
-        }
-
-        return $appRN;
+        return $this->apresentaRN;
     }
 
     public function salvaFormulario()
     {
         // $Conexao = $this->conectar_banco();
 
-        if (isset($_POST)) {
-            $apresentacao = $this->getApresentacao();
-            $aviso = $this->getAviso();
-            $cartaApp = $this->getCartaApresentacao();
-            $acaoGraca = $this->getAcaoGracas();
-            $pedidoOracao = $this->getPedidoOracao();
-            $appRN = $this->getApresentacaoRN();
-            $idUser = $this->getIdUsuario();
-        }
-
         try {
-            $conexao = $this->conectar_banco();
+            $insertForm = $this->conexao()->prepare(
+                "INSERT INTO formulario (apresentacao, aviso, cartaApresentacao, acaoGraca, pedidoOracao, apresentacaoRN, inscritorID)
+                        VALUES (:apresentacao, :aviso, :cartaApresentacao, :acaoGraca, :pedidoOracao, :apresentacaoRN, :inscritor)"
+            );
+            $insertForm->bindValue(':apresentacao', $this->getApresentacao(), PDO::PARAM_STR);
+            $insertForm->bindValue(':aviso', $this->getAviso(), PDO::PARAM_STR);
+            $insertForm->bindValue(':cartaApresentacao', $this->getCartaApresentacao(), PDO::PARAM_STR);
+            $insertForm->bindValue(':acaoGraca', $this->getAcaoGracas(), PDO::PARAM_STR);
+            $insertForm->bindValue(':pedidoOracao', $this->getPedidoOracao(), PDO::PARAM_STR);
+            $insertForm->bindValue(':apresentacaoRN', $this->getApresentacaoRN(), PDO::PARAM_STR);
+            $insertForm->bindValue(':inscritor', $this->getIdUsuario(), PDO::PARAM_STR);
 
-            $insert = $conexao->query("INSERT INTO formulario (apresentacao, aviso, cartaApresentacao, acaoGraca, pedidoOracao, apresentacaoRN, inscritorID) 
-            VALUES ('$apresentacao', '$aviso', '$cartaApp', '$acaoGraca', '$pedidoOracao',  '$appRN', $idUser)");
-            // VALUES ('Gabriel', 1, 1, 'foto.png', 'Gabriel',  'gabriel@Hotmail')");
-
-            header('location: ../view/login.php');
+            if ($insertForm->execute()) {
+                echo 'Salvo com Sucesso';
+                header('location: ../view/carregaForm.php');
+            } else {
+                echo 'Formulário não salvo';
+            }
+            // header('location: ../view/login.php');
         } catch (PDOException $e) {
             echo 'Erro: ' . $e->getMessage();
         }
@@ -111,4 +118,11 @@ class CadastrarFormulario extends Conexao
 }
 
 $salvarFormulario = new CadastrarFormulario;
+session_start();
+$salvarFormulario->setIdUsuario($_SESSION['id']);
+$salvarFormulario->setApresentacao($_POST['apresentacao']);
+$salvarFormulario->setAvisos($_POST['aviso']);
+$salvarFormulario->setCartaApresentacao($_POST['cartaApp']);
+$salvarFormulario->setAcaoGraca($_POST['acaoGraca']);
+$salvarFormulario->setApresentaRN($_POST['apresentacaoRN']);
 $salvarFormulario->salvaFormulario();
