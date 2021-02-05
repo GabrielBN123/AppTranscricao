@@ -57,8 +57,8 @@ $nome_usuario = $_SESSION['nome_usuario'];
     </nav>
     <div class="tudo">
         <?php
-        if (isset($_POST['btnSelecao'])) {
-            $load_form = $_POST['btnSelecao'];
+        if (isset($_GET['btnSelecao'])) {
+            $load_form = $_GET['btnSelecao'];
 
             switch ($load_form) {
                 case 'form_Recepcao':
@@ -83,41 +83,19 @@ $nome_usuario = $_SESSION['nome_usuario'];
                     break;
             }
         } else {
-            include('forms/recepcao.php');
+            // include('forms/recepcao.php');
+            echo 'erro';
         }
         ?>
-        <!-- <div class="container">
-            <div class="row py-5 fundo_img">
-                <h2 class="mb-1 rounded bg-light py-3" id="form">Selecione o Formulário a ser carregado</h2>
-                <div class="col-md-12 p-4 bg-light  rounded  corpo_form">
-                    <div class="col-md-12 col-lg-12">
-                        <div class="col-md-12">
-                            <form class="needs-validation" novalidate>
-                                <div class="row">
-                                    <form action="" method="post">
-                                        <div class="form-group">
-                                            <select name="" id="" class="form-select my-5">
-                                                <option value="">Nome do cliente cadastrado</option>
-                                            </select>
-                                        </div>
-                                    </form>
-                                    <hr>
-                                    <button class="col-md-12 col-lg-2 btn btn-primary btn-lg btn_form" type="submit">Enviar</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
+    <!-- <button class="btn_chat"><i class="far fa-comment-dots"></i></button> -->
 
     <!--Footer-->
     <footer class="footer">
         &#169; Assembleia de Deus
     </footer>
 
-
+<script src="../../assets/js/chat.js"></script>
 
 </body>
 

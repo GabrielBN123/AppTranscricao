@@ -11,7 +11,7 @@
                 <div class="col-md-12">
                     <div class="row">
                         <?php
-                            $FormLeitura->exibirDados();0
+                            $FormLeitura->exibirDados();
                         ?>
                         <hr>
                         <button class="col-md-12 col-lg-2 btn btn-primary btn-lg btn_form">Próximo</button>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31-Jan-2021 às 09:46
+-- Tempo de geração: 05-Fev-2021 às 03:07
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.1
 
@@ -63,13 +63,6 @@ CREATE TABLE `formulario` (
   `apresentacaoRN` varchar(500) DEFAULT NULL,
   `inscritorID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `formulario`
---
-
-INSERT INTO `formulario` (`formID`, `nomeCliente`, `apresentacao`, `aviso`, `cartaApresentacao`, `acaoGraca`, `pedidoOracao`, `apresentacaoRN`, `inscritorID`) VALUES
-(1, NULL, 'teste primeiro', '145', '', '77777', NULL, 'nenhum', 9);
 
 -- --------------------------------------------------------
 
@@ -161,7 +154,7 @@ ALTER TABLE `campo`
 -- AUTO_INCREMENT de tabela `formulario`
 --
 ALTER TABLE `formulario`
-  MODIFY `formID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `formID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `instituicao`

@@ -44,7 +44,7 @@ $nome_usuario = $_SESSION['nome_usuario'];
         <div class="row bg-light rounded cont_mobile">
             <div class="col-md-12">
                 <div class="row">
-                    <form action="../view/carregaForm.php" method="post">
+                    <form action="../view/carregaForm.php" method="GET">
                         <input type="number" name="id" value="" hidden>
                         <div class="col-12 my-5 text-center btn_recep">
                             <input type="submit" id="form_Recepcao" name="btnSelecao" value="form_Recepcao" hidden>

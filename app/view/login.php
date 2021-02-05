@@ -4,17 +4,18 @@
 <head>
 <?php
 // define('baseURl', 'http://localhost/front/');
-define('baseURl', '../../');
+// define('baseURl', '../../');
  
  ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Entrar Transcrição</title>
-    <link rel="stylesheet" href="<?php echo baseURl;?>assets/css/bootstrap.css">
-    <link rel="stylesheet" href="<?php echo baseURl;?>assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo baseURl;?>assets/css/css.css">
-    <script src="<?php echo baseURl;?>assets/js/jquery-3.5.1.min.js"></script>
+    <?php include('../controller/carregar_js_css.php'); ?>
+    <!-- <link rel="stylesheet" href="<?php echo baseURl;?>assets/css/bootstrap.css"> -->
+    <!-- <link rel="stylesheet" href="<?php echo baseURl;?>assets/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="<?php echo baseURl;?>assets/css/css.css"> -->
+    <!-- <script src="<?php echo baseURl;?>assets/js/jquery-3.5.1.min.js"></script> -->
 </head>
 
 <body>
