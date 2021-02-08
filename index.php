@@ -1,3 +1,10 @@
+
+<?php  
+
+header('location: app/view/login.php');
+
+?>
+
 <!-- <nav>
 <a href=""></a>
 <a href="app/view/cadastro.php"></a>
@@ -6,7 +13,7 @@
 <a href="app/view/cadastroInstituicao.php">Página de cadastro de instituição</a>
 </nav> -->
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -52,4 +59,4 @@
 
 </body>
 
-</html>
+</html> -->

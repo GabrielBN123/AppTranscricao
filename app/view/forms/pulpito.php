@@ -21,3 +21,4 @@
         </div>
     </div>
 </div>
+<script src="../../../assets/js/loadForm.js"></script>

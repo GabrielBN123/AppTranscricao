@@ -5,7 +5,14 @@ require('conexao.php');
 
 class LeituraFormulário extends Conexao
 {
+    private $idForm = null;
     private $select = null;
+
+    public function setID($idForm)
+    {
+        $this->idForm = $this->idForm;
+    }
+    
 
     public function selectDados()
     {
