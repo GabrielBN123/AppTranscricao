@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastrar</title>
     <?php include('../controller/carregar_js_css.php'); ?>
+    <?php include('../model/dadosOpcoes.php'); ?>
+
 </head>
 <style>
     body {
@@ -24,7 +26,7 @@
             </div>
             <div class="form my-5 mx-5">
                 <form action="../model/cadastrar.php" method="POST" enctype="multipart/form-data">
-                <!-- <form method="POST" enctype="multipart/form-data"> -->
+                    <!-- <form method="POST" enctype="multipart/form-data"> -->
                     <div class="input_div">
                         <label for="foto" class="label_foto">
                             <div class="div_foto rounded-circle">
@@ -49,20 +51,21 @@
                         <label for="atuacao" class="label_cadastro">Área de atuação</label>
                         <br>
                         <select class="form-select mt-2 form-select-lg" name="area_atuacao" id="atuacao" aria-label="Default select example">
-                            <option selected value="1">Recepção</option>
-                            <option value="2">Transcrição</option>
-                            <option value="3">Pulpito</option>
+                            <option selected value="null">Escolha a Função</option>
+                            <?php $exibir->opcoesCampo(); ?>
                         </select>
                     </div>
                     <div class="input_div form-group">
                         <label for="instituicao" class="label_cadastro">Instituição</label>
                         <br>
                         <select class="form-select mt-2 form-select-lg" name="instituicao" id="instituicao" aria-label="Default select example">
-                            <option selected value="1">Asembleia</option>
-                            <option value="2">Outro 01</option>
-                            <option value="3">Outro 02</option>
+
+                            <option selected value="null">Escolha uma Opção</option>
+                            <?php $exibir->opcoesInstituicao(); ?>
                         </select>
                     </div>
+                    Não encontrou sua Instituição? <a href="cadastroInstituicao.php">Cadastrar nova</a>
+                    <br><br>
                     Já é Cadastrado? <a href="login.php">Entrar</a>
                     <br><br>
                     <input type="submit" value="Cadastrar" class="input_btn">

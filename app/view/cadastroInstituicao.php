@@ -18,16 +18,16 @@
                 <h1 class="titulo_h1_cadastro">Cadastro de Instituição</h1>
             </div>
             <div class="form my-5 mx-5">
-                <form action="../controller/cadastrar.php" method="POST" enctype="multipart/form-data">
+                <form action="../model/cadastroInstituicao.php" method="POST" enctype="multipart/form-data">
                     <div class="input_div form-group">
                         <label for="nome" class="label_cadastro">Nome da Instituição</label>
                         <br>
-                        <input class="form-control mt-2 form-control-lg" name="nome" type="text" id="nome" placeholder="Nome da instituição" aria-label=".form-control-lg example">
+                        <input class="form-control mt-2 form-control-lg" name="nomeInstituicao" type="text" id="nomeInstituicao" placeholder="Nome da instituição" aria-label=".form-control-lg example">
                     </div>
                     <div class="input_div form-group">
                         <label for="nome" class="label_cadastro">Descrição</label>
                         <br>
-                        <input class="form-control mt-2 form-control-lg" name="nome" type="text" id="nome" placeholder="Descrição" aria-label=".form-control-lg example">
+                        <input class="form-control mt-2 form-control-lg" name="descricao" type="text" id="descricao" placeholder="Descrição" aria-label=".form-control-lg example">
                     </div>
                     <br><br>
                     <input type="submit" value="Cadastrar" class="input_btn">

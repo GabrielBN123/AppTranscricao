@@ -5,111 +5,50 @@ require("conexao.php");
 // pode destacar os parâmetros “name”, “type”, “size” e “tmp_name”, 
 // para passar as informações do nome, tipo, tamanho e um local temporário que é criado quando o arquivo é enviado.
 
-class CadastrarUsuario extends Conexao
+class CadastrarInstituicao extends Conexao
 {
     // variavel da classe Conexao
     // protected $conexao = $this->conect;
 
-    private $nome = null;
-    private $area_atua = null;
-    private $instituicao = null;
-    private $senha = null;
-    private $email = null;
-    private $nome_imagem = null;
+    private $nomeInstituicao = null;
+    private $descricao = null;
 
 
-    public function setNome($nome)
+    public function setNomeInstituicao($nomeInstituicao)
     {
-        $this->nome = $nome;
-
-        return $nome;
+        $this->nomeInstituicao = $nomeInstituicao;
     }
 
-    public function setArea($area_atua)
+    public function setDescricao($descricao)
     {
-        $this->area_atua = $area_atua;
-    }
-
-    public function setInstituicao($instituicao)
-    {
-        $this->instituicao =  intval( $instituicao);
-    }
-
-    public function setFoto()
-    {
-        $this->nome_imagem = md5(uniqid(time())) . "." . 'png';;
-    }
-
-    public function setSenha()
-    {
-        $this->senha = strtolower($this->nome);
-    }
-
-    public function setEmail($email)
-    {
-        $this->email = $email;
+        $this->descricao = $descricao;
     }
 
     // passa os dados
-    public function getNome()
+    public function getNomeInstituicao()
     {
-        return  $this->nome;
+        return  $this->nomeInstituicao;
     }
 
-    public function getArea()
+    public function getDescricao()
     {
-        return  $this->area_atua;
+        return  $this->descricao;
     }
 
-    public function getInstituicao()
-    {
-        return  $this->instituicao;
-    }
-
-    public function getFoto()
-    {
-        return  $this->nome_imagem;
-    }
-
-    public function getSenha()
-    {
-        return  $this->senha;
-    }
-
-    public function getEmail()
-    {
-        return  $this->email;
-    }
-
-    public function moveFoto()
-    {
-        $imagem = $_FILES['Foto'];
-
-        $caminho_imagem = "../../assets/img/foto_usuario/teste/" . $this->nome_imagem;
-
-        move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
-    }
-
-    public function cadastra_usuario()
+    public function cadastra_instituicao()
     {
 
-        if ($this->getNome() != null && $this->getEmail() != null) {
-            echo 'Foto: ' . $this->getFoto() . '<br>';
+        if ($this->getNomeInstituicao() != null) {
             try {
-                $insert = $this->conexao()->prepare("INSERT INTO usuarios (nome_usuario, area_atuaID, instituicaoID, foto_usuario, senha_usuario, email_usuario)
-                    VALUES (:nome, :areaAtua, :instituto, :foto, :senha, :email)"
+                $insert = $this->conexao()->prepare("INSERT INTO instituicao (nomeInstituicao, descricao)
+                    VALUES (:nomeInstituicao, :descricao)"
                 );
-                $insert->bindValue(':nome', $this->getNome(), PDO::PARAM_STR);
-                $insert->bindValue(':areaAtua', $this->getArea(), PDO::PARAM_STR);
-                $insert->bindValue(':instituto', $this->getInstituicao(), PDO::PARAM_STR);
-                $insert->bindValue(':foto', $this->getFoto(), PDO::PARAM_STR);
-                $insert->bindValue(':senha', $this->getSenha(), PDO::PARAM_STR);
-                $insert->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
+                $insert->bindValue(':nomeInstituicao', $this->getNomeInstituicao(), PDO::PARAM_STR);
+                $insert->bindValue(':descricao', $this->getDescricao(), PDO::PARAM_STR);
 
                 if ($insert->execute()) {
                     echo 'Inserido com Sucesso';
-                    $this->moveFoto();
-                    header('location: ../view/login.php');
+                    header('location: ../view/cadastro.php');
                 } else {
                     echo 'Não cadastrado, Favor Tentar Novamente!';
                 }
@@ -123,11 +62,7 @@ class CadastrarUsuario extends Conexao
     }
 }
 
-$cadastrar = new CadastrarUsuario;
-$cadastrar->setNome($_POST['nome']);
-$cadastrar->setArea($_POST['area_atuacao']);
-$cadastrar->setInstituicao($_POST['instituicao']);
-$cadastrar->setEmail($_POST['email']);
-$cadastrar->setFoto();
-$cadastrar->setSenha();
-$cadastrar->cadastra_usuario();
+$cadastrarInst = new CadastrarInstituicao;
+$cadastrarInst->setNomeInstituicao($_POST['nomeInstituicao']);
+$cadastrarInst->setDescricao($_POST['descricao']);
+$cadastrarInst->cadastra_instituicao();
