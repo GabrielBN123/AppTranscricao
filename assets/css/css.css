@@ -193,11 +193,11 @@
 /*and (max-width: 1440px)*/
 
 {
-    .btn_trasnc,
+    .btn_pulp,
     .btn_recep {
         display: none;
     }
-    .btn_pulp {
+    .btn_trasnc {
         display: inline-block;
     }
     .cont_mobile {
@@ -211,11 +211,11 @@
 }
 
 @media screen and (max-width: 1040px) and (min-width: 450px) {
-    .btn_pulp,
+    .btn_trasnc,
     .btn_recep {
         display: none;
     }
-    .btn_trasnc {
+    .btn_pulp {
         display: inline-block;
     }
     .cont_mobile {
