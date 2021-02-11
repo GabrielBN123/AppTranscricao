@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Fev-2021 às 03:07
+-- Tempo de geração: 09-Fev-2021 às 02:50
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.1
 
@@ -40,11 +40,19 @@ CREATE TABLE `campo` (
 INSERT INTO `campo` (`campoID`, `nome_campo`, `descricao_campo`) VALUES
 (1, 'recepcao', 'Recepção'),
 (2, 'trancricao', 'Transcrição'),
-(3, 'pulpito', 'Púlpito'),
-(4, 'teste', 'Teste Inserção'),
-(5, 'teste', 'Teste Inserção'),
-(6, 'teste', 'Teste Inserção'),
-(7, 'teste', 'Teste Inserção');
+(3, 'pulpito', 'Púlpito');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `chat`
+--
+
+CREATE TABLE `chat` (
+  `chatID` int(11) NOT NULL,
+  `mensagem` text NOT NULL,
+  `usuarioID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -73,14 +81,14 @@ CREATE TABLE `formulario` (
 CREATE TABLE `instituicao` (
   `instituicaoID` int(11) NOT NULL,
   `nomeInstituicao` varchar(100) NOT NULL,
-  `decricao` varchar(100) DEFAULT NULL
+  `descricao` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `instituicao`
 --
 
-INSERT INTO `instituicao` (`instituicaoID`, `nomeInstituicao`, `decricao`) VALUES
+INSERT INTO `instituicao` (`instituicaoID`, `nomeInstituicao`, `descricao`) VALUES
 (1, 'Assembleia', 'Assembleia de Deus');
 
 -- --------------------------------------------------------
@@ -120,6 +128,13 @@ ALTER TABLE `campo`
   ADD PRIMARY KEY (`campoID`);
 
 --
+-- Índices para tabela `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`chatID`),
+  ADD KEY `usuarioID` (`usuarioID`);
+
+--
 -- Índices para tabela `formulario`
 --
 ALTER TABLE `formulario`
@@ -151,6 +166,12 @@ ALTER TABLE `campo`
   MODIFY `campoID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT de tabela `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `chatID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `formulario`
 --
 ALTER TABLE `formulario`
@@ -160,7 +181,7 @@ ALTER TABLE `formulario`
 -- AUTO_INCREMENT de tabela `instituicao`
 --
 ALTER TABLE `instituicao`
-  MODIFY `instituicaoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `instituicaoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
@@ -171,6 +192,12 @@ ALTER TABLE `usuarios`
 --
 -- Restrições para despejos de tabelas
 --
+
+--
+-- Limitadores para a tabela `chat`
+--
+ALTER TABLE `chat`
+  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`usuarioID`) REFERENCES `usuarios` (`userID`);
 
 --
 -- Limitadores para a tabela `formulario`
