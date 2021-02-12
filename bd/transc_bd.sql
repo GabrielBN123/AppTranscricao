@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Tempo de geração: 09-Fev-2021 às 02:50
--- Versão do servidor: 10.4.17-MariaDB
--- versão do PHP: 8.0.1
+-- Host: localhost
+-- Generation Time: 12-Fev-2021 às 18:47
+-- Versão do servidor: 5.7.11
+-- PHP Version: 7.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -18,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `transc_bd`
+-- Database: `transc_bd`
 --
 
 -- --------------------------------------------------------
@@ -45,18 +44,6 @@ INSERT INTO `campo` (`campoID`, `nome_campo`, `descricao_campo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `chat`
---
-
-CREATE TABLE `chat` (
-  `chatID` int(11) NOT NULL,
-  `mensagem` text NOT NULL,
-  `usuarioID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `formulario`
 --
 
@@ -69,7 +56,8 @@ CREATE TABLE `formulario` (
   `acaoGraca` varchar(500) DEFAULT NULL,
   `pedidoOracao` varchar(500) DEFAULT NULL,
   `apresentacaoRN` varchar(500) DEFAULT NULL,
-  `inscritorID` int(11) NOT NULL
+  `inscritorID` int(11) NOT NULL,
+  `instituicaoID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -80,15 +68,15 @@ CREATE TABLE `formulario` (
 
 CREATE TABLE `instituicao` (
   `instituicaoID` int(11) NOT NULL,
-  `nomeInstituicao` varchar(100) NOT NULL,
-  `descricao` varchar(100) DEFAULT NULL
+  `nome_instituicao` varchar(100) NOT NULL,
+  `decricao_instituicao` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `instituicao`
 --
 
-INSERT INTO `instituicao` (`instituicaoID`, `nomeInstituicao`, `descricao`) VALUES
+INSERT INTO `instituicao` (`instituicaoID`, `nome_instituicao`, `decricao_instituicao`) VALUES
 (1, 'Assembleia', 'Assembleia de Deus');
 
 -- --------------------------------------------------------
@@ -105,7 +93,7 @@ CREATE TABLE `usuarios` (
   `instituicaoID` int(11) NOT NULL,
   `foto_usuario` varchar(255) NOT NULL,
   `senha_usuario` varchar(25) NOT NULL DEFAULT '123456',
-  `data_cadastro` timestamp NOT NULL DEFAULT current_timestamp(),
+  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `email_usuario` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -118,37 +106,31 @@ INSERT INTO `usuarios` (`userID`, `nome_usuario`, `sobrenome_usuario`, `area_atu
 (9, 'Jhonas', NULL, 1, 1, 'b8a2639b734fd39af0229e0e79ff4717.png', 'jhonas', '2021-01-31 04:01:40', 'gabrielgaara2013@gmail.com');
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `campo`
+-- Indexes for table `campo`
 --
 ALTER TABLE `campo`
   ADD PRIMARY KEY (`campoID`);
 
 --
--- Índices para tabela `chat`
---
-ALTER TABLE `chat`
-  ADD PRIMARY KEY (`chatID`),
-  ADD KEY `usuarioID` (`usuarioID`);
-
---
--- Índices para tabela `formulario`
+-- Indexes for table `formulario`
 --
 ALTER TABLE `formulario`
   ADD PRIMARY KEY (`formID`),
-  ADD KEY `inscritorID` (`inscritorID`);
+  ADD KEY `inscritorID` (`inscritorID`),
+  ADD KEY `instituicaoID` (`instituicaoID`);
 
 --
--- Índices para tabela `instituicao`
+-- Indexes for table `instituicao`
 --
 ALTER TABLE `instituicao`
   ADD PRIMARY KEY (`instituicaoID`);
 
 --
--- Índices para tabela `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`userID`),
@@ -156,54 +138,39 @@ ALTER TABLE `usuarios`
   ADD KEY `instituicaoID` (`instituicaoID`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `campo`
+-- AUTO_INCREMENT for table `campo`
 --
 ALTER TABLE `campo`
-  MODIFY `campoID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+  MODIFY `campoID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de tabela `chat`
---
-ALTER TABLE `chat`
-  MODIFY `chatID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `formulario`
+-- AUTO_INCREMENT for table `formulario`
 --
 ALTER TABLE `formulario`
-  MODIFY `formID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `formID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de tabela `instituicao`
+-- AUTO_INCREMENT for table `instituicao`
 --
 ALTER TABLE `instituicao`
-  MODIFY `instituicaoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `instituicaoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de tabela `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- Restrições para despejos de tabelas
+-- Constraints for dumped tables
 --
-
---
--- Limitadores para a tabela `chat`
---
-ALTER TABLE `chat`
-  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`usuarioID`) REFERENCES `usuarios` (`userID`);
 
 --
 -- Limitadores para a tabela `formulario`
 --
 ALTER TABLE `formulario`
-  ADD CONSTRAINT `formulario_ibfk_1` FOREIGN KEY (`inscritorID`) REFERENCES `usuarios` (`userID`);
+  ADD CONSTRAINT `formulario_ibfk_1` FOREIGN KEY (`inscritorID`) REFERENCES `usuarios` (`userID`),
+  ADD CONSTRAINT `instituiicaoID_ibfk_1` FOREIGN KEY (`instituicaoID`) REFERENCES `instituicao` (`instituicaoID`);
 
 --
 -- Limitadores para a tabela `usuarios`
@@ -211,7 +178,6 @@ ALTER TABLE `formulario`
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`area_atuaID`) REFERENCES `campo` (`campoID`),
   ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`instituicaoID`) REFERENCES `instituicao` (`instituicaoID`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

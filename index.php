@@ -3,6 +3,8 @@
 
 header('location: app/view/login.php');
 
+// include_once('app/view/login.php');
+
 ?>
 
 <!-- <nav>

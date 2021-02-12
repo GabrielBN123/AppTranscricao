@@ -8,7 +8,7 @@ class LeituraFormulário extends Conexao
 
     public function selectDados()
     {
-        $this->select = $this->conexao()->prepare('SELECT * FROM formulario');
+        $this->select = $this->con()->prepare('SELECT * FROM formulario');
     }
 
     public function getDados()
@@ -18,7 +18,7 @@ class LeituraFormulário extends Conexao
 
     public function exibirDados()
     {
-        $select = $this->conexao()->prepare('SELECT * FROM formulario');
+        $select = $this->con()->prepare('SELECT * FROM formulario');
 
         $select->execute();
 

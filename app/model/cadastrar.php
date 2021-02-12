@@ -97,7 +97,7 @@ class Usuario extends Conexao
         if ($this->getNome() != null && $this->getEmail() != null) {
             echo 'Foto: ' . $this->getFoto() . '<br>';
             try {
-                $insert = $this->conexao()->prepare("INSERT INTO usuarios (nome_usuario, area_atuaID, instituicaoID, foto_usuario, senha_usuario, email_usuario)
+                $insert = $this->con()->prepare("INSERT INTO usuarios (nome_usuario, area_atuaID, instituicaoID, foto_usuario, senha_usuario, email_usuario)
                     VALUES (:nome, :areaAtua, :instituto, :foto, :senha, :email)"
                 );
                 $insert->bindValue(':nome', $this->getNome(), PDO::PARAM_STR);

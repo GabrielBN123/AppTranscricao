@@ -40,7 +40,7 @@ class CadastrarInstituicao extends Conexao
 
         if ($this->getNomeInstituicao() != null) {
             try {
-                $insert = $this->conexao()->prepare("INSERT INTO instituicao (nomeInstituicao, descricao)
+                $insert = $this->con()->prepare("INSERT INTO instituicao (nomeInstituicao, descricao)
                     VALUES (:nomeInstituicao, :descricao)"
                 );
                 $insert->bindValue(':nomeInstituicao', $this->getNomeInstituicao(), PDO::PARAM_STR);

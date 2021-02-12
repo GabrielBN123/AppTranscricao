@@ -1,5 +1,30 @@
 <?php
 
+require 'conexao.php';
+
+class Opcoes extends Conexao{
+
+    public function getListFunctions(){
+        $stmt = $this->con()->prepare('select * from campo');
+        $stmt->execute();
+        $dados = $stmt->fetchAll();
+        foreach($dados as $value){
+            echo "<option selected value={$value['campoID']}>{$value['nome_campo']}</option>";
+        }
+    }
+
+    public function getListInstituicao(){
+        $stmt = $this->con()->prepare('select * from instituicao');
+        $stmt->execute();
+        $dados = $stmt->fetchAll();
+        foreach($dados as $value){
+            echo "<option selected value={$value['instituicaoID']}>{$value['decricao_instituicao']}</option>";
+        }
+    }
+
+}
+
+/*
 require('conexao.php');
 //namespace app\model\Conexao;
 
@@ -10,9 +35,9 @@ class exibicaoOpcao extends Conexao
 
     public function selectCampo()
     {
-        $this->dadosSelectCAMP = $this->conexao()->prepare('SELECT * FROM campo');
+        $this->dadosSelectCAMP = $this->con()->prepare('SELECT * FROM campo');
 
-        return $this->dadosSelectCAMP;
+        //return $this->dadosSelectCAMP;
     }
 
     public function executaSelectCAMP ()
@@ -34,9 +59,9 @@ class exibicaoOpcao extends Conexao
     
     public function selectInstituicao()
     {
-        $this->dadosSelectINST = $this->conexao()->prepare('SELECT * FROM instituicao');
+        $this->dadosSelectINST = $this->con()->prepare('SELECT * FROM instituicao');
 
-        return $this->dadosSelectINST;
+        //return $this->dadosSelectINST;
     }
 
     public function executaSelectINST ()
@@ -58,3 +83,4 @@ class exibicaoOpcao extends Conexao
     }
 }
 $exibir = new exibicaoOpcao;
+*/

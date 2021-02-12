@@ -33,7 +33,7 @@ class Login extends Conexao
         if ($this->getEmail() != null && $this->getSenha() != null) {
             try {
                 session_start();
-                $select = $this->conexao()->prepare('SELECT * FROM usuarios WHERE email_usuario=:email and binary senha_usuario=:senha');
+                $select = $this->con()->prepare('SELECT * FROM usuarios WHERE email_usuario=:email and binary senha_usuario=:senha');
                 $select->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
                 $select->bindValue(':senha', $this->getSenha(), PDO::PARAM_STR);
                 if ($select->execute() && count($select->fetchAll()) > 0) {
@@ -45,10 +45,12 @@ class Login extends Conexao
                         $nome = $key['nome_usuario'];
                         $ID = $key['userID'];
                         $atuacao = $key['area_atuaID'];
+                        $instituicao = $key['area_atuaID'];
                     }
                     $_SESSION['id'] = $ID;
                     $_SESSION['nome_usuario'] = $nome;
                     $_SESSION['atuacao'] = $atuacao;
+                    $_SESSION['instituicao'] = $instituicao;
 
                     // echo $_SESSION['id'] . '<br>';
                     // echo $_SESSION['nome_usuario'];

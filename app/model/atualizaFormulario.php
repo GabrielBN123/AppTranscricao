@@ -98,7 +98,7 @@ class attFormulario extends Conexao
         // $Conexao = $this->conectar_banco();
 
         try {
-            $insertForm = $this->conexao()->prepare(
+            $insertForm = $this->con()->prepare(
                 "UPDATE formulario SET 
                 apresentacao = :apresentacao,
                 aviso = :aviso, 

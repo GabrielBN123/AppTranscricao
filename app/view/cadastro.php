@@ -6,17 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastrar</title>
-    <?php include('../controller/carregar_js_css.php'); ?>
-    <?php include('../model/dadosOpcoes.php'); ?>
+    <?php
+    include('../controller/carregar_js_css.php');
+    include('../model/opcoesCadastro.php');
+    $exibir = new Opcoes;
+    ?>
 
 </head>
-<style>
-    body {
-        background-image: linear-gradient(10deg, rgb(4, 19, 41) 20%, rgb(10, 49, 100) 100%);
-    }
-</style>
-
 <body>
+
     <div class="fundo">
     </div>
     <div class="row h-100 painel_log_cadastro col-md-12 col-lg-4">
@@ -52,7 +50,7 @@
                         <br>
                         <select class="form-select mt-2 form-select-lg" name="area_atuacao" id="atuacao" aria-label="Default select example">
                             <option selected value="null">Escolha a Função</option>
-                            <?php $exibir->opcoesCampo(); ?>
+                            <?php $exibir->getListFunctions(); ?>
                         </select>
                     </div>
                     <div class="input_div form-group">
@@ -61,7 +59,7 @@
                         <select class="form-select mt-2 form-select-lg" name="instituicao" id="instituicao" aria-label="Default select example">
 
                             <option selected value="null">Escolha uma Opção</option>
-                            <?php $exibir->opcoesInstituicao(); ?>
+                            <?php $exibir->getListInstituicao(); ?>
                         </select>
                     </div>
                     Não encontrou sua Instituição? <a href="cadastroInstituicao.php">Cadastrar nova</a>

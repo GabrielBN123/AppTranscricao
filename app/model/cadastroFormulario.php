@@ -15,6 +15,7 @@ class CadastrarFormulario extends Conexao
     private $acaoGraca = null;
     private $pedidoOracao = null;
     private $apresentaRN = null;
+    private $instituicao = null;
 
     public function setIdUsuario($idUsuario)
     {
@@ -49,6 +50,11 @@ class CadastrarFormulario extends Conexao
     public function setApresentaRN($apresentaRN)
     {
         $this->apresentaRN = $apresentaRN;
+    }
+
+    public function setInstituicao($instituicao)
+    {
+        $this->instituicao = $instituicao;
     }
 
 
@@ -87,14 +93,19 @@ class CadastrarFormulario extends Conexao
         return $this->apresentaRN;
     }
 
+    public function getInstituicao()
+    {
+        return $this->instituicao;
+    }
+
     public function salvaFormulario()
     {
         // $Conexao = $this->conectar_banco();
 
         try {
-            $insertForm = $this->conexao()->prepare(
-                "INSERT INTO formulario (apresentacao, aviso, cartaApresentacao, acaoGraca, pedidoOracao, apresentacaoRN, inscritorID)
-                        VALUES (:apresentacao, :aviso, :cartaApresentacao, :acaoGraca, :pedidoOracao, :apresentacaoRN, :inscritor)"
+            $insertForm = $this->con()->prepare(
+                "INSERT INTO formulario (apresentacao, aviso, cartaApresentacao, acaoGraca, pedidoOracao, apresentacaoRN, inscritorID, isntituicaoID)
+                        VALUES (:apresentacao, :aviso, :cartaApresentacao, :acaoGraca, :pedidoOracao, :apresentacaoRN, :inscritor, :instituicao)"
             );
             $insertForm->bindValue(':apresentacao', $this->getApresentacao(), PDO::PARAM_STR);
             $insertForm->bindValue(':aviso', $this->getAviso(), PDO::PARAM_STR);
@@ -102,8 +113,9 @@ class CadastrarFormulario extends Conexao
             $insertForm->bindValue(':acaoGraca', $this->getAcaoGracas(), PDO::PARAM_STR);
             $insertForm->bindValue(':pedidoOracao', $this->getPedidoOracao(), PDO::PARAM_STR);
             $insertForm->bindValue(':apresentacaoRN', $this->getApresentacaoRN(), PDO::PARAM_STR);
-            $insertForm->bindValue(':inscritor', $this->getIdUsuario(), PDO::PARAM_STR);
-
+            $insertForm->bindValue(':inscritor', $this->getIdUsuario(), PDO::PARAM_INT);
+            $insertForm->bindValue(':instituicao', $this->getInstituicao(), PDO::PARAM_INT);
+            
             if ($insertForm->execute()) {
                 echo 'Salvo com Sucesso';
                 header('location: ../view/carregaForm.php?id=&btnSelecao=form_Recepcao');
@@ -126,4 +138,5 @@ $salvarFormulario->setCartaApresentacao($_POST['cartaApp']);
 $salvarFormulario->setAcaoGraca($_POST['acaoGraca']);
 $salvarFormulario->setPedidoOracao($_POST['pedidoOracao']);
 $salvarFormulario->setApresentaRN($_POST['apresentacaoRN']);
+$salvarFormulario->setInstituicao($_POST['instituicao']);
 $salvarFormulario->salvaFormulario();
