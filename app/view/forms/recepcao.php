@@ -1,7 +1,7 @@
 <title>Recepção</title>
 <div class="container">
     <div class="row py-5 fundo_img">
-        <h2 class="mb-1 rounded bg-light py-3" id="form">Formulário</h2>
+        <h2 class="mb-1 rounded bg-light py-3" id="form">Formulário: Recepção</h2>
         <div class="col-md-12 p-4 bg-light  rounded  corpo_form">
             <div class="col-md-12 col-lg-12">
                 <div class="col-md-12">

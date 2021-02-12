@@ -26,6 +26,7 @@ if ((!isset($_SESSION['id']) == true) && (!isset($_SESSION['nome_usuario']) == t
 
 $usuarioID = $_SESSION['id'];
 $nome_usuario = $_SESSION['nome_usuario'];
+$atuacao_usuario = $_SESSION['atuacao'];
 
 
 // echo 'ID: ' . $usuarioID . ' . Nome: ' .$nome_usuario; 

@@ -5,7 +5,7 @@ require("conexao.php");
 // pode destacar os parâmetros “name”, “type”, “size” e “tmp_name”, 
 // para passar as informações do nome, tipo, tamanho e um local temporário que é criado quando o arquivo é enviado.
 
-class CadastrarUsuario extends Conexao
+class Usuario extends Conexao
 {
     // variavel da classe Conexao
     // protected $conexao = $this->conect;
@@ -42,7 +42,8 @@ class CadastrarUsuario extends Conexao
 
     public function setSenha()
     {
-        $this->senha = strtolower($this->nome);
+        $this->senha = preg_replace("/\s+/", "", $this->nome);
+        $this->senha = strtolower($this->senha);
     }
 
     public function setEmail($email)
@@ -90,7 +91,7 @@ class CadastrarUsuario extends Conexao
         move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
     }
 
-    public function cadastra_usuario()
+    public function cadastra()
     {
 
         if ($this->getNome() != null && $this->getEmail() != null) {
@@ -100,8 +101,8 @@ class CadastrarUsuario extends Conexao
                     VALUES (:nome, :areaAtua, :instituto, :foto, :senha, :email)"
                 );
                 $insert->bindValue(':nome', $this->getNome(), PDO::PARAM_STR);
-                $insert->bindValue(':areaAtua', $this->getArea(), PDO::PARAM_STR);
-                $insert->bindValue(':instituto', $this->getInstituicao(), PDO::PARAM_STR);
+                $insert->bindValue(':areaAtua', $this->getArea(), PDO::PARAM_INT);
+                $insert->bindValue(':instituto', $this->getInstituicao(), PDO::PARAM_INT);
                 $insert->bindValue(':foto', $this->getFoto(), PDO::PARAM_STR);
                 $insert->bindValue(':senha', $this->getSenha(), PDO::PARAM_STR);
                 $insert->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
@@ -123,11 +124,13 @@ class CadastrarUsuario extends Conexao
     }
 }
 
-$cadastrar = new CadastrarUsuario;
-$cadastrar->setNome($_POST['nome']);
-$cadastrar->setArea($_POST['area_atuacao']);
-$cadastrar->setInstituicao($_POST['instituicao']);
-$cadastrar->setEmail($_POST['email']);
-$cadastrar->setFoto();
-$cadastrar->setSenha();
-$cadastrar->cadastra_usuario();
+$usuario = new Usuario;
+
+$usuario->setNome($_POST['nome']);
+$usuario->setArea($_POST['area_atuacao']);
+$usuario->setInstituicao($_POST['instituicao']);
+$usuario->setEmail($_POST['email']);
+$usuario->setFoto();
+$usuario->setSenha();
+
+$usuario->cadastra();

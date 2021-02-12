@@ -48,11 +48,13 @@ class Login extends Conexao
                     }
                     $_SESSION['id'] = $ID;
                     $_SESSION['nome_usuario'] = $nome;
+                    $_SESSION['atuacao'] = $atuacao;
 
                     // echo $_SESSION['id'] . '<br>';
                     // echo $_SESSION['nome_usuario'];
 
-                    header('location: ../view/funcao.php');
+                    // header('location: ../view/funcao.php');
+                    header('location: ../view/carregaForm.php');
                 } else {
                     echo 'Usuário não encontrado!';
                 }

@@ -34,6 +34,7 @@
 
 session_start();
 
+
 if ((!isset($_SESSION['id']) == true) && (!isset($_SESSION['nome_usuario']) == true)) {
 
     unset($_SESSION['id']);
@@ -44,7 +45,7 @@ if ((!isset($_SESSION['id']) == true) && (!isset($_SESSION['nome_usuario']) == t
 
 $usuarioID = $_SESSION['id'];
 $nome_usuario = $_SESSION['nome_usuario'];
-
+$atuacao_usuario = $_SESSION['atuacao'];
 ?>
 
 
@@ -57,35 +58,60 @@ $nome_usuario = $_SESSION['nome_usuario'];
     </nav>
     <div class="tudo">
         <?php
-        if (isset($_GET['btnSelecao'])) {
-            $load_form = $_GET['btnSelecao'];
 
-            switch ($load_form) {
-                case 'form_Recepcao':
-                    // echo $load_form;
-                    include('forms/recepcao.php');
-                    break;
+        switch ($atuacao_usuario) {
+            case '1':
+                # code...
+                include('forms/recepcao.php');
 
-                case 'form_Transcricao':
-                    // echo $load_form;
-                    include('forms/transcricao.php');
-                    break;
+                break;
 
-                case 'form_Pulpito':
-                    // echo $load_form;
-                    include('forms/pulpito.php');
-                    # code...
-                    break;
+            case '2':
+                # code...
+                include('forms/transcricao.php');
 
-                default:
-                    include('forms/recepcao.php');
-                    // echo 'Nenhum formulário';
-                    break;
-            }
-        } else {
-            // include('forms/recepcao.php');
-            echo 'erro';
+                break;
+
+            case '3':
+                # code...
+                include('forms/pulpito.php');
+
+                break;
+
+            default:
+                # code...
+                break;
         }
+
+        // if (isset($_GET['btnSelecao'])) {
+        //     $load_form = $_GET['btnSelecao'];
+
+        //     switch ($load_form) {
+        //         case 'form_Recepcao':
+        //             // echo $load_form;
+        //             include('forms/recepcao.php');
+        //             break;
+
+        //         case 'form_Transcricao':
+        //             // echo $load_form;
+        //             include('forms/transcricao.php');
+        //             break;
+
+        //         case 'form_Pulpito':
+        //             // echo $load_form;
+        //             include('forms/pulpito.php');
+        //             # code...
+        //             break;
+
+        //         default:
+        //             include('forms/recepcao.php');
+        //             // echo 'Nenhum formulário';
+        //             break;
+        //     }
+        // } else {
+        //     // include('forms/recepcao.php');
+        //     echo 'erro';
+        // }
         ?>
     </div>
     <!-- <button class="btn_chat"><i class="far fa-comment-dots"></i></button> -->
@@ -95,7 +121,7 @@ $nome_usuario = $_SESSION['nome_usuario'];
         &#169; Assembleia de Deus
     </footer>
 
-<script src="../../assets/js/chat.js"></script>
+    <script src="../../assets/js/chat.js"></script>
 
 </body>
 
