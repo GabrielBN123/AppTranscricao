@@ -244,6 +244,34 @@
 }
 
 
+/* input senha da pagina Login */
+
+.senha_class {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+
+/* toggler password button */
+
+.btn_view_pass {
+    border: solid #092f5f 1px;
+    font-size: 15pt;
+    color: white;
+    border-radius: 5px;
+    padding: 0.5vw 1vw 0.8vw;
+    background-image: linear-gradient(10deg, rgb(4, 19, 41) 20%, rgb(10, 49, 100) 100%);
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.pass_view_on {
+    display: none;
+}
+
+
 /* CHAT */
 
 .btn_chat {

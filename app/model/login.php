@@ -45,7 +45,7 @@ class Login extends Conexao
                         $nome = $key['nome_usuario'];
                         $ID = $key['userID'];
                         $atuacao = $key['area_atuaID'];
-                        $instituicao = $key['area_atuaID'];
+                        $instituicao = $key['instituicaoID'];
                     }
                     $_SESSION['id'] = $ID;
                     $_SESSION['nome_usuario'] = $nome;

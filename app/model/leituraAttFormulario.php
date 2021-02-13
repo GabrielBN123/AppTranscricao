@@ -2,13 +2,35 @@
 
 require("conexao.php");
 
-class LeituraFormulário extends Conexao
+class Formulario extends Conexao
 {
     private $select = null;
 
-    public function selectDados()
+    public function quantidadeFormularios()
     {
-        $this->select = $this->con()->prepare('SELECT * FROM formulario');
+
+        $instituicaoID = $_SESSION['instituicao'];
+
+        $select = $this->con()->prepare('SELECT * FROM formulario where instituicaoID = :instituicaoID');
+
+        $select->bindValue(':instituicaoID', $instituicaoID, PDO::PARAM_INT);
+
+        $select->execute();
+
+        $count = $select->rowCount();
+
+        if ($count > 0) {
+            $count = 1;
+            foreach ($select as $key) {
+                // $key['formID'];
+                echo "<option selected value={$key['formID']}>{$count}</option>";
+                $count++;
+            }
+        } else {
+            echo "<option selected value='null'>Não há nenhum Registro há ser exibido</option>";
+            // include '../view/.php';
+            // echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+        }
     }
 
     public function getDados()
@@ -16,71 +38,26 @@ class LeituraFormulário extends Conexao
         return $this->select->execute();
     }
 
-    public function exibirDados()
+    public function exibirDados($formID)
     {
-        $select = $this->con()->prepare('SELECT * FROM formulario');
+        $instituicaoID = $_SESSION['instituicao'];
+
+        $select = $this->con()->prepare('SELECT * FROM formulario where instituicaoID = :instituicaoID and formID = :formID');
+
+        $select->bindValue(':instituicaoID', $instituicaoID, PDO::PARAM_INT);
+        $select->bindValue(':formID', $formID, PDO::PARAM_INT);
+        
 
         $select->execute();
 
-        foreach ($select as $dados) {
+        $count = $select->rowCount();
 
-            if ($dados['apresentacao'] != null || '') {
-?>
-                <h6>
-                    Formulário numero: <?php echo $dados['apresentacao'] ?>
-                </h6>
-                <hr>
-                <div class="col-md-12">
-                    <h5>Apresentação</h5>
-
-                    <textarea class="form-control" name="apresentacao" id="apre" placeholder="Apresentação" rows="3"><?php echo $dados['apresentacao']; ?></textarea>
-                </div>
-            <?php
-            }
-
-            if ($dados['aviso'] != null || '') {
-            ?>
-                <input type="number" name="formID" hidden value="<?php echo $dados['formID'] ?>">
-                <div class="col-md-12">
-                    <h5>Avisos</h5>
-                    <textarea class="form-control" name="aviso" id="apre" placeholder="Apresentação" rows="3"><?php echo $dados['aviso']; ?></textarea>
-                </div>
-            <?php
-            }
-            if ($dados['cartaApresentacao'] != null || '') {
-            ?>
-                <div class="col-md-12">
-                    <h5>Carta de apresentação</h5>
-                    <textarea class="form-control" name="cartaApp" id="apre" placeholder="Apresentação" rows="3"><?php echo $dados['cartaApresentacao']; ?></textarea>
-                </div>
-            <?php
-            }
-            if ($dados['acaoGraca'] != null || '') {
-            ?>
-                <div class="col-md-12">
-                    <h5>Ação de Graças</h5>
-                    <textarea class="form-control" name="acaoGraca" id="apre" placeholder="Apresentação" rows="3"><?php echo $dados['acaoGraca']; ?></textarea>
-                </div>
-            <?php
-            }
-            if ($dados['pedidoOracao'] != null || '') {
-            ?>
-                <div class="col-md-12">
-                    <h5>Pedido de Oração</h5>
-                    <textarea class="form-control" name="pedidoOracao" id="apre" placeholder="Apresentação" rows="3"><?php echo $dados['pedidoOracao']; ?></textarea>
-                </div>
-            <?php
-            }
-            if ($dados['apresentacaoRN'] != null || '') {
-            ?>
-                <div class="col-md-12">
-                    <h5>Apresentação de Recém-Nascidos</h5>
-                    <textarea class="form-control" name="apresentacaoRN" id="apre" placeholder="Apresentação" rows="3"><?php echo $dados['apresentacaoRN']; ?></textarea>
-                </div>
-<?php
-            }
+        if ($count > 0) {
+            include '../view/forms/exibicaoTranscricao.php';
+        } else {
+            // include '../view/.php';
+            echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
         }
     }
+
 }
-$FormLeitura = new LeituraFormulário;
-$FormLeitura->selectDados();

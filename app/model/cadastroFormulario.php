@@ -104,7 +104,7 @@ class CadastrarFormulario extends Conexao
 
         try {
             $insertForm = $this->con()->prepare(
-                "INSERT INTO formulario (apresentacao, aviso, cartaApresentacao, acaoGraca, pedidoOracao, apresentacaoRN, inscritorID, isntituicaoID)
+                "INSERT INTO formulario (apresentacao, aviso, cartaApresentacao, acaoGraca, pedidoOracao, apresentacaoRN, inscritorID, instituicaoID)
                         VALUES (:apresentacao, :aviso, :cartaApresentacao, :acaoGraca, :pedidoOracao, :apresentacaoRN, :inscritor, :instituicao)"
             );
             $insertForm->bindValue(':apresentacao', $this->getApresentacao(), PDO::PARAM_STR);

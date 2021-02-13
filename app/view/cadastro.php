@@ -13,6 +13,7 @@
     ?>
 
 </head>
+
 <body>
 
     <div class="fundo">
@@ -35,6 +36,11 @@
                         <input type="hidden" name="MAX_FILE_SIZE" value="99999999" />
                         <input type="file" class="input_foto" onchange="loadFile(event)" name="Foto" accept="image/x-png,image/gif,image/jpeg" id="foto">
                     </div>
+                    <!-- <div class="input_div form-group">
+                        <label for="email" class="label_cadastro">senha</label>
+                        <br>
+                        <input class="form-control mt-2 form-control-lg" name="senha" type="text" id="senha" placeholder="Senha" aria-label=".form-control-lg example">
+                    </div> -->
                     <div class="input_div form-group">
                         <label for="email" class="label_cadastro">E-mail</label>
                         <br>

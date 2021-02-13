@@ -28,15 +28,23 @@ class LeituraFormulário extends Conexao
     {
         $instituicaoID = $_SESSION['instituicao'];
 
-        $select = $this->con()->prepare('SELECT * FROM formulario where instituicaoID = ' . $instituicaoID);
+        // echo '<br>' . $instituicaoID . '<br>';
+
+        $select = $this->con()->prepare('SELECT * FROM formulario where instituicaoID = :instituicaoID');
+
+        $select->bindValue(':instituicaoID', $instituicaoID, PDO::PARAM_INT);
 
         $select->execute();
 
-        if(isset($select)){
-            include '../view/leitura.php';
+        $count = $select->rowCount();
+
+
+        if($count > 0){
+            include '../view/forms/leituraDadosForm.php';
         }
         else{
-            echo 123;
+            // include '../view/.php';
+            echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
         }
     }
 }
