@@ -23,7 +23,7 @@ class Formulario extends Conexao
             $count = 1;
             foreach ($select as $key) {
                 // $key['formID'];
-                echo "<option selected value={$key['formID']}>{$count}</option>";
+                echo "<option value={$key['formID']}>{$count}</option>";
                 $count++;
             }
         } else {
@@ -46,7 +46,7 @@ class Formulario extends Conexao
 
         $select->bindValue(':instituicaoID', $instituicaoID, PDO::PARAM_INT);
         $select->bindValue(':formID', $formID, PDO::PARAM_INT);
-        
+
 
         $select->execute();
 
@@ -59,5 +59,4 @@ class Formulario extends Conexao
             echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
         }
     }
-
 }

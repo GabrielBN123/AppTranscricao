@@ -55,6 +55,7 @@ $instituicao = $_SESSION['instituicao'];
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="../model/logout.php"><i class="fas fa-arrow-circle-left"></i> Sair</a>
+            <h2 class="mb-1 rounded bg-light py-3" id="form">Igreja Evangélica Assembléia de Deus Cuiabá </h2>
         </div>
     </nav>
     <div class="tudo">
@@ -70,6 +71,8 @@ $instituicao = $_SESSION['instituicao'];
             case '2':
                 # code...
                 include('forms/transcricao.php');
+                echo '<script src="../../assets/js/transcricao.js"></script>';
+
 
                 break;
 
@@ -119,7 +122,7 @@ $instituicao = $_SESSION['instituicao'];
 
     <!--Footer-->
     <footer class="footer">
-        &#169; Assembleia de Deus
+         Apptranscrição Copyright &#169; 2020 | Todos os Direitos Reservados | Desenvolvido por Husai Tecnologia CNPJ - 20.166.924/0001-70
     </footer>
 
     <script src="../../assets/js/chat.js"></script>

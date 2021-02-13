@@ -68,8 +68,10 @@
                             <?php $exibir->getListInstituicao(); ?>
                         </select>
                     </div>
-                    Não encontrou sua Instituição? <a href="cadastroInstituicao.php">Cadastrar nova</a>
-                    <br><br>
+                    <?php
+                    // Não encontrou sua Instituição? <a href="cadastroInstituicao.php">Cadastrar nova</a>
+                    // <br><br>
+                    ?>
                     Já é Cadastrado? <a href="login.php">Entrar</a>
                     <br><br>
                     <input type="submit" value="Cadastrar" class="input_btn">

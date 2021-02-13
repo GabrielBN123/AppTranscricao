@@ -16,7 +16,13 @@ class CadastrarFormulario extends Conexao
     private $pedidoOracao = null;
     private $apresentaRN = null;
     private $instituicao = null;
+    
+    private $felicitacao = null;
+    private $pedidoLouvor = null;
+    private $pedidoComunhao = null;
 
+
+    
     public function setIdUsuario($idUsuario)
     {
         $this->idUsuario = $idUsuario;
@@ -57,6 +63,20 @@ class CadastrarFormulario extends Conexao
         $this->instituicao = $instituicao;
     }
 
+    public function setFelicitacao($felicitacao)
+    {
+        $this->felicitacao = $felicitacao;
+    }
+
+    public function setPedidoLouvor($pedidoLouvor)
+    {
+        $this->pedidoLouvor = $pedidoLouvor;
+    }
+
+    public function setPedidoComunhao($pedidoComunhao)
+    {
+        $this->pedidoComunhao = $pedidoComunhao;
+    }
 
     public function getIdUsuario()
     {
@@ -93,6 +113,21 @@ class CadastrarFormulario extends Conexao
         return $this->apresentaRN;
     }
 
+    public function getFelicitacao()
+    {
+        return $this->felicitacao;
+    }
+
+    public function getPedidoLouvor()
+    {
+        return $this->pedidoLouvor;
+    }
+
+    public function getPedidoComunhao()
+    {
+        return $this->pedidoComunhao;
+    }
+
     public function getInstituicao()
     {
         return $this->instituicao;
@@ -104,8 +139,8 @@ class CadastrarFormulario extends Conexao
 
         try {
             $insertForm = $this->con()->prepare(
-                "INSERT INTO formulario (apresentacao, aviso, cartaApresentacao, acaoGraca, pedidoOracao, apresentacaoRN, inscritorID, instituicaoID)
-                        VALUES (:apresentacao, :aviso, :cartaApresentacao, :acaoGraca, :pedidoOracao, :apresentacaoRN, :inscritor, :instituicao)"
+                "INSERT INTO formulario (apresentacaoVisitante, aviso, cartaApresentacao, acaoGraca, pedidoOracao, apresentacaoRN, inscritorID, instituicaoID,felicitacoes, pedidoLouvor, pedidoComunhao)
+                        VALUES (:apresentacao, :aviso, :cartaApresentacao, :acaoGraca, :pedidoOracao, :apresentacaoRN, :inscritor, :instituicao, :felicitacao, :pedidoLouvor, :pedidoComunhao)"
             );
             $insertForm->bindValue(':apresentacao', $this->getApresentacao(), PDO::PARAM_STR);
             $insertForm->bindValue(':aviso', $this->getAviso(), PDO::PARAM_STR);
@@ -113,6 +148,10 @@ class CadastrarFormulario extends Conexao
             $insertForm->bindValue(':acaoGraca', $this->getAcaoGracas(), PDO::PARAM_STR);
             $insertForm->bindValue(':pedidoOracao', $this->getPedidoOracao(), PDO::PARAM_STR);
             $insertForm->bindValue(':apresentacaoRN', $this->getApresentacaoRN(), PDO::PARAM_STR);
+            $insertForm->bindValue(':felicitacao', $this->getFelicitacao(), PDO::PARAM_STR);
+            $insertForm->bindValue(':pedidoLouvor', $this->getPedidoLouvor(), PDO::PARAM_STR);
+            $insertForm->bindValue(':pedidoComunhao', $this->getPedidoComunhao(), PDO::PARAM_STR);
+            
             $insertForm->bindValue(':inscritor', $this->getIdUsuario(), PDO::PARAM_INT);
             $insertForm->bindValue(':instituicao', $this->getInstituicao(), PDO::PARAM_INT);
             
@@ -138,5 +177,11 @@ $salvarFormulario->setCartaApresentacao($_POST['cartaApp']);
 $salvarFormulario->setAcaoGraca($_POST['acaoGraca']);
 $salvarFormulario->setPedidoOracao($_POST['pedidoOracao']);
 $salvarFormulario->setApresentaRN($_POST['apresentacaoRN']);
+
+$salvarFormulario->setFelicitacao($_POST['felicitacoes']);
+$salvarFormulario->setPedidoLouvor($_POST['pedidoLouvor']);
+$salvarFormulario->setPedidoComunhao($_POST['pedidoComunhao']);
+
 $salvarFormulario->setInstituicao($_POST['instituicao']);
 $salvarFormulario->salvaFormulario();
+

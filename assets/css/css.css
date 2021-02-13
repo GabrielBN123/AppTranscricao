@@ -244,11 +244,47 @@
 }
 
 
+/* leitura de Pulpito */
+
+.upper_pulpito {
+    text-transform: uppercase;
+}
+
+
+/* btbn enviar dados */
+
+.btn_atualiza_form {
+    float: right;
+}
+
+
+/* btn atualiza pagina transcricão */
+
+.atualiza_pagina {
+    margin-top: -7.4vw !important;
+}
+
+
 /* input senha da pagina Login */
 
 .senha_class {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
+}
+
+
+/* btnOK pulpito */
+
+.btn_lido_OK {
+    float: right;
+    padding: 5px 10px;
+    font-size: 15pt;
+    border-radius: 20px;
+    border: none !important;
+    outline: none;
+    background-image: linear-gradient(10deg, rgb(4, 19, 41) 20%, rgb(10, 49, 100) 100%);
+    color: white;
+    margin-top: -0.6vw;
 }
 
 
@@ -269,6 +305,10 @@
 
 .pass_view_on {
     display: none;
+}
+
+.select_formID {
+    width: 10vw;
 }
 
 

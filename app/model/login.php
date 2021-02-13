@@ -52,12 +52,10 @@ class Login extends Conexao
                     $_SESSION['atuacao'] = $atuacao;
                     $_SESSION['instituicao'] = $instituicao;
 
-                    // echo $_SESSION['id'] . '<br>';
-                    // echo $_SESSION['nome_usuario'];
-
                     // header('location: ../view/funcao.php');
                     header('location: ../view/carregaForm.php');
                 } else {
+                    header('location: ../view/login.php');
                     echo 'Usuário não encontrado!';
                 }
             } catch (PDOException $e) {

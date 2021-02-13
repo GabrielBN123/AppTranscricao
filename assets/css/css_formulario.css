@@ -12,7 +12,7 @@ body {
     background-color: #092954;
     color: white;
     /* margin-top: 50px; */
-    height: 50px;
+    min-height: 100px;
     /* novos adicionados */
     width: 100%;
     padding: 10px 0;
