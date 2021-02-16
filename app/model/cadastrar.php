@@ -119,7 +119,8 @@ class Usuario extends Conexao
                 echo 'Erro: ' . $e->getMessage();
             }
         } else {
-            echo 'Vazio';
+            echo 'Ocorreu um erro <br>';
+            echo '<a href="javascript: history.go(-1)">Retornar</a>';
         }
     }
 }

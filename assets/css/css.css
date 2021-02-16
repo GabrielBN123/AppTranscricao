@@ -143,6 +143,37 @@
 }
 
 
+/* div de exibição dos campos da pagina pulpito */
+
+.campo_exibe_pulpito {
+    /* border: solid 2px #041329; */
+    margin: 1vw 0;
+    /* border-radius: 10px; */
+}
+
+span.dropdown_btn {
+    float: right;
+    font-size: 22pt;
+    cursor: pointer;
+    display: none;
+}
+
+h5.dropdown_btn {
+    cursor: pointer;
+}
+
+.dropdown_pulpito {
+    display: none;
+}
+
+.caixa_dados_pulpito {
+    border: solid 1px #041329;
+    border-radius: 10px;
+    padding: 1vw 1vw;
+    margin: 1vw 0;
+}
+
+
 /* ipad pro 1024 */
 
 @media screen and (max-width: 1500px) and (min-width: 950px) {

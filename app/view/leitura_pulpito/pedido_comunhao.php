@@ -1,5 +1,3 @@
-<div class="col-md-12">
-    <h5>Pedido de Comunhão</h5>
     <?php
     foreach ($select as $pedido_comunhao) {
         if ($pedido_comunhao['pedidoComunhao'] != null || '') {
@@ -15,4 +13,3 @@
         }
     }
     ?>
-</div>

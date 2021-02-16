@@ -1,5 +1,3 @@
-<div class="col-md-12">
-    <h5>Apresentação de Recém-Nascidos</h5>
     <?php
     foreach ($select as $apresentacaoRN) {
         if ($apresentacaoRN['apresentacaoRN'] != null || '') {
@@ -14,4 +12,3 @@
         }
     }
     ?>
-</div>

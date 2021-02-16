@@ -10,34 +10,97 @@ include('../model/leituraPulpito.php');
             <div class="col-md-12 col-lg-12">
                 <div class="col-md-12">
                     <div class="row">
-                        <?php
-                        $FormLeitura->exibeApresentacao();
-                        echo '<hr style="height: 0.5vw;" />';
-                        $FormLeitura->exibeAviso();
-
-                        echo '<hr style="height: 0.5vw;" />';
-                        $FormLeitura->exibePedidoOracao();
-
-                        echo '<hr style="height: 0.5vw;" />';
-                        $FormLeitura->exibeFelicitacao();
-
-                        echo '<hr style="height: 0.5vw;" />';
-                        $FormLeitura->exibePedidoLouvor();
-
-                        echo '<hr style="height: 0.5vw;" />';
-                        $FormLeitura->exibeAcaoGraca();
-
-                        echo '<hr style="height: 0.5vw;" />';
-                        $FormLeitura->exibeApresentacaoRN();
-
-                        echo '<hr style="height: 0.5vw;" />';
-                        $FormLeitura->exibePedidoComunhao();
-
-                        echo '<hr style="height: 0.5vw;"/>';
-                        $FormLeitura->exibeCartaApresentacao();
-                        ?>
+                        <div class="col-md-12 caixa_dados_pulpito">
+                            <h5 class="dropdown_btn">Apresentação de Visitante<span class="dropdown_btn"><i class="far fa-arrow-alt-circle-down"></i></span></h5>
+                            <hr />
+                            <div class="dropdown_pulpito campo_exibe_pulpito">
+                                <?php
+                                $FormLeitura->exibeApresentacao();
+                                ?>
+                            </div>
+                        </div>
+                        <!-- <hr style="height: 0.5vw;" /> -->
+                        <div class="col-md-12 caixa_dados_pulpito">
+                            <h5 class="dropdown_btn">Avisos<span class="dropdown_btn"><i class="far fa-arrow-alt-circle-down"></i></span></h5>
+                            <hr />
+                            <div class="dropdown_pulpito campo_exibe_pulpito">
+                                <?php
+                                $FormLeitura->exibeAviso();
+                                ?>
+                            </div>
+                        </div>
+                        <!-- <hr style="height: 0.5vw;" /> -->
+                        <div class="col-md-12 caixa_dados_pulpito">
+                            <h5 class="dropdown_btn">Pedido de Oração<span class="dropdown_btn"><i class="far fa-arrow-alt-circle-down"></i></span></h5>
+                            <hr />
+                            <div class="dropdown_pulpito campo_exibe_pulpito">
+                                <?php
+                                $FormLeitura->exibePedidoOracao();
+                                ?>
+                            </div>
+                        </div>
+                        <!-- <hr style="height: 0.5vw;" /> -->
+                        <div class="col-md-12 caixa_dados_pulpito">
+                            <h5 class="dropdown_btn">Felicitações<span class="dropdown_btn"><i class="far fa-arrow-alt-circle-down"></i></span></h5>
+                            <hr />
+                            <div class="dropdown_pulpito campo_exibe_pulpito">
+                                <?php
+                                $FormLeitura->exibeFelicitacao();
+                                ?>
+                            </div>
+                        </div>
+                        <!-- <hr style="height: 0.5vw;" /> -->
+                        <div class="col-md-12 caixa_dados_pulpito">
+                            <h5 class="dropdown_btn">Pedido de Louvor<span class="dropdown_btn"><i class="far fa-arrow-alt-circle-down"></i></span></h5>
+                            <hr />
+                            <div class="dropdown_pulpito campo_exibe_pulpito">
+                                <?php
+                                $FormLeitura->exibePedidoLouvor();
+                                ?>
+                            </div>
+                        </div>
+                        <!-- <hr style="height: 0.5vw;" /> -->
+                        <div class="col-md-12 caixa_dados_pulpito">
+                            <h5 class="dropdown_btn">Ação de Graças<span class="dropdown_btn"><i class="far fa-arrow-alt-circle-down"></i></span></h5>
+                            <hr />
+                            <div class="dropdown_pulpito campo_exibe_pulpito">
+                                <?php
+                                $FormLeitura->exibeAcaoGraca();
+                                ?>
+                            </div>
+                        </div>
+                        <!-- <hr style="height: 0.5vw;" /> -->
+                        <div class="col-md-12 caixa_dados_pulpito">
+                            <h5 class="dropdown_btn">Apresentação de Recém-Nascidos<span class="dropdown_btn"><i class="far fa-arrow-alt-circle-down"></i></span></h5>
+                            <hr />
+                            <div class="dropdown_pulpito campo_exibe_pulpito">
+                                <?php
+                                $FormLeitura->exibeApresentacaoRN();
+                                ?>
+                            </div>
+                        </div>
+                        <!-- <hr style="height: 0.5vw;" /> -->
+                        <div class="col-md-12 caixa_dados_pulpito">
+                            <h5 class="dropdown_btn">Pedido de Comunhão<span class="dropdown_btn"><i class="far fa-arrow-alt-circle-down"></i></span></h5>
+                            <hr />
+                            <div class="dropdown_pulpito campo_exibe_pulpito">
+                                <?php
+                                $FormLeitura->exibePedidoComunhao();
+                                ?>
+                            </div>
+                        </div>
+                        <!-- <hr style="height: 0.5vw;" /> -->
+                        <div class="col-md-12 caixa_dados_pulpito">
+                            <h5 class="dropdown_btn">Carta de apresentação <span class="dropdown_btn"><i class="far fa-arrow-alt-circle-down"></i></span> </h5>
+                            <hr />
+                            <div class="dropdown_pulpito campo_exibe_pulpito">
+                                <?php
+                                $FormLeitura->exibeCartaApresentacao();
+                                ?>
+                            </div>
+                        </div>
                         <hr>
-                        <button class="col-md-12 col-lg-2 my-5 btn btn-primary btn-lg btn_form reload_btn">Atualizar <i class="fas fa-sync-alt"></i></button>
+                        <!-- <button class="col-md-12 col-lg-2 my-5 btn btn-primary btn-lg btn_form reload_btn">Atualizar <i class="fas fa-sync-alt"></i></button> -->
                         <!-- <button class="col-md-12 col-lg-2 btn btn-primary btn-lg btn_form">Próximo</button> -->
                     </div>
                 </div>

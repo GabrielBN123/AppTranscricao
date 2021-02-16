@@ -41,7 +41,8 @@ class LeituraFormulário extends Conexao
             include '../view/leitura_pulpito/apresentacao.php';
         } else {
             // include '../view/.php';
-            echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            // echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            echo '<h1 style="text-align: center;"> Não há nenhum Registro </h1>';
         }
     }
 
@@ -61,7 +62,8 @@ class LeituraFormulário extends Conexao
             include '../view/leitura_pulpito/aviso.php';
         } else {
             // include '../view/.php';
-            echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            // echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            echo '<h1 style="text-align: center;"> Não há nenhum Registro </h1>';
         }
     }
 
@@ -81,7 +83,8 @@ class LeituraFormulário extends Conexao
             include '../view/leitura_pulpito/felicitacao.php';
         } else {
             // include '../view/.php';
-            echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            // echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            echo '<h1 style="text-align: center;"> Não há nenhum Registro </h1>';
         }
     }
 
@@ -101,7 +104,8 @@ class LeituraFormulário extends Conexao
             include '../view/leitura_pulpito/pedido_louvor.php';
         } else {
             // include '../view/.php';
-            echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            // echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            echo '<h1 style="text-align: center;"> Não há nenhum Registro </h1>';
         }
     }
 
@@ -121,7 +125,8 @@ class LeituraFormulário extends Conexao
             include '../view/leitura_pulpito/carta_apresentacao.php';
         } else {
             // include '../view/.php';
-            echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            // echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            echo '<h1 style="text-align: center;"> Não há nenhum Registro </h1>';
         }
     }
     public function exibeAcaoGraca()
@@ -140,7 +145,8 @@ class LeituraFormulário extends Conexao
             include '../view/leitura_pulpito/acao_gracas.php';
         } else {
             // include '../view/.php';
-            echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            // echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            echo '<h1 style="text-align: center;"> Não há nenhum Registro </h1>';
         }
     }
 
@@ -160,7 +166,8 @@ class LeituraFormulário extends Conexao
             include '../view/leitura_pulpito/pedido_oracao.php';
         } else {
             // include '../view/.php';
-            echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            // echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            echo '<h1 style="text-align: center;"> Não há nenhum Registro </h1>';
         }
     }
 
@@ -180,7 +187,8 @@ class LeituraFormulário extends Conexao
             include '../view/leitura_pulpito/pedido_comunhao.php';
         } else {
             // include '../view/.php';
-            echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            // echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            echo '<h1 style="text-align: center;"> Não há nenhum Registro </h1>';
         }
     }
 
@@ -200,7 +208,8 @@ class LeituraFormulário extends Conexao
             include '../view/leitura_pulpito/apresentacaoRN.php';
         } else {
             // include '../view/.php';
-            echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            // echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
+            echo '<h1 style="text-align: center;"> Não há nenhum Registro </h1>';
         }
     }
 }
