@@ -4,7 +4,13 @@ $(function() {
         window.location.reload(true);
     })
     $(document).on('click', function(event) {
-        $(event.target).closest("p").css("color", "red");
+        var btn_lido = $(event.target);
+        if (btn_lido.closest("p").css("color", "red") == true) {
+            btn_lido.closest("p").css("color", "black");
+        } else {
+            btn_lido.closest("p").css("color", "red");
+        }
+
     })
     $('.dropdown_btn').on('click', function(span) {
         var btn = $(span.target);
