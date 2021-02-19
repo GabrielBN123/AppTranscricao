@@ -3,9 +3,11 @@ $(function() {
     $('.reload_btn').on('click', function() {
         window.location.reload(true);
     })
-    $(document).on('click', function(event) {
+    $('.btn_lido').on('click', function(event) {
         var btn_lido = $(event.target);
-        if (btn_lido.closest("p").css("color", "red") == true) {
+        var btn_lido_color = btn_lido.closest("p").css("color");
+
+        if (btn_lido_color == "rgb(255, 0, 0)" || btn_lido_color == "red") {
             btn_lido.closest("p").css("color", "black");
         } else {
             btn_lido.closest("p").css("color", "red");
