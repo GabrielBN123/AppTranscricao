@@ -1,5 +1,3 @@
-<div class="col-md-12">
-    <h5>Pedido de Oração</h5>
     <?php
     foreach ($select as $pedido_oracao) {
         if ($pedido_oracao['pedidoOracao'] != null || '') {
@@ -16,4 +14,3 @@
         }
     }
     ?>
-</div>

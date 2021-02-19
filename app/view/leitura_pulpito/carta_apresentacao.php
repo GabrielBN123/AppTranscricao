@@ -1,5 +1,3 @@
-<div class="col-md-12">
-    <h5>Carta de apresentação</h5>
     <?php
     foreach ($select as $carta_apresentacao) {
         if ($carta_apresentacao['cartaApresentacao'] != null || '') {
@@ -9,10 +7,8 @@
                 <button class="btn_lido btn_lido_OK"><i class="far fa-check-circle"></i></button>
             </p>
     <?php
-        }
-        else{
+        } else {
             $mensagemCartaApresentacaoVazia = '<p>Nenhuma Carta de Apresentação</p>';
         }
     }
     ?>
-</div>

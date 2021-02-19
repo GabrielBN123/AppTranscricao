@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                     <form method="post" action="../model/cadastroFormulario.php" class="needs-validation" novalidate>
                         <div class="row">
-                            <input type="number" name="idUsuario" id="" value="<?php echo $idUsuario; ?>" hidden>
+                            <input type="number" name="idUsuario" id="" value="<?php echo $usuarioID; ?>" hidden>
                             <input type="number" name="instituicao" id="" value="<?php echo $instituicao; ?>" hidden>
                             <div class="col-md-12 resp_12 col-lg-6 mb-3">
                                 <label for="apre" class="form-label">
