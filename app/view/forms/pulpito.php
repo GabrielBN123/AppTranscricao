@@ -13,7 +13,7 @@ include('../model/leituraPulpito.php');
                         <div class="col-md-12 caixa_dados_pulpito">
                             <h5 class="dropdown_btn">Apresentação de Visitante<span class="dropdown_btn"><i class="far fa-arrow-alt-circle-down"></i></span></h5>
                             <hr />
-                            <div class="dropdown_pulpito campo_exibe_pulpito">
+                            <div class="dropdown_pulpito campo_exibe_pulpito" id="msgPulpito">
                                 <?php
                                 $FormLeitura->exibeApresentacao();
                                 ?>

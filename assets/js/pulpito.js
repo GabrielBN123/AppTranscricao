@@ -20,3 +20,22 @@ $(function() {
     })
 
 })
+
+//C:\xampp\htdocs\AppTranscricao\app\view\forms\pulpito.php
+
+
+// $('.dropdown_btn').on('click', function(span) {
+//     var btn = $(span.target);
+//     btn.closest($('h5')).next('hr').next('.dropdown_pulpito').toggle();
+// })
+
+// setInterval(() => {
+//     let xhr = new XMLHttpRequest();
+//     xhr.onreadystatechange = function() {
+//         if (this.status == 200 && this.readyState == 4) {
+//             document.getElementById('msgPulpito').innerHTML = this.response;
+//         }
+//     }
+//     xhr.open('GET', '../../model/LoaderMsgPulpito.php');
+//     xhr.send();
+// }, 3000);
