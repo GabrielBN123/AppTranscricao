@@ -8,7 +8,7 @@ define('baseURl', '../../');
 
 <?php //baseURl . 'assets/css/bootstrap.css' ?>
 
-<link rel="stylesheet" href="<?php echo baseURl;?>assets/css/bootstrap.css">
+<!-- <link rel="stylesheet" href="<?php echo baseURl;?>assets/css/bootstrap.css"> -->
 <link rel="stylesheet" href="<?php echo baseURl;?>assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?php echo baseURl;?>assets/css/css.css">
 <link rel="stylesheet" href="<?php echo baseURl;?>assets/css/all.css">

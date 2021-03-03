@@ -32,6 +32,7 @@ body {
 .btn_form {
     background-color: #041329;
     border-color: #041329;
+    height: 55px;
 }
 
 .btn_form:hover {

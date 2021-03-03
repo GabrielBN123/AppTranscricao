@@ -6,6 +6,12 @@
     // define('baseURl', 'http://localhost/front/');
     // define('baseURl', '../../');
 
+    session_start();
+
+    if ((isset($_SESSION['id']) == true) && (isset($_SESSION['nome_usuario']) == true)) {
+        header("Location:carregaForm.php");
+    }
+
     ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,18 +37,19 @@
                     <div class="input_div form-group">
                         <label for="nome" class="label_cadastro">E-mail</label>
                         <br>
-                        <input class="form-control mt-2 form-control-lg" name="email" type="text" id="nome" placeholder="Email" aria-label=".form-control-lg example">
+                        <div class="row">
+                            <input class="form-control col-md-12 mt-2 form-control-lg" name="email" type="text" id="nome" placeholder="Email" aria-label=".form-control-lg example">
+                        </div>
                     </div>
                     <div class="input_div form-group">
                         <label for="Senha" class="label_cadastro">Senha</label>
                         <br>
                         <div class="row">
-
-                            <div class="col-md-10 m-0 p-0">
+                            <div class="col-md-10 col-10 m-0 p-0">
                                 <input class="form-control mt-2 form-control-lg senha_class" name="senha" type="password" id="senha" placeholder="Senha" aria-label=".form-control-lg example">
 
                             </div>
-                            <div class="col-md-2 m-0 px-0 pt-3">
+                            <div class="col-md-2 m-0 col-2 px-0 pt-3 div_btn_showPass">
                                 <span class="toggle_view_pass btn_view_pass pass_view_on"><i class="far fa-eye"></i></span>
                                 <span class="toggle_view_pass btn_view_pass pass_view_off"><i class="far fa-eye-slash"></i></span>
 

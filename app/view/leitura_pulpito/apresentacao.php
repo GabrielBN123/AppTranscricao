@@ -1,4 +1,5 @@
 <?php
+// var_dump($select);
 foreach ($select as $apresentacao) {
     if ($apresentacao['apresentacaoVisitante'] != null || '') {
 ?>

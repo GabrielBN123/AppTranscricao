@@ -3,7 +3,7 @@
 require('conexao.php');
 //namespace app\model\Conexao;
 
-class LeituraFormulário extends Conexao
+class Formulário extends Conexao
 {
     private $idForm = null;
     private $select = null;
@@ -22,6 +22,26 @@ class LeituraFormulário extends Conexao
     public function getDados()
     {
         return $this->select->execute();
+    }
+
+    public function exibeDados($campo, $arquivo)
+    {
+        $instituicaoID = intval($_SESSION['instituicao']);
+
+        $selectNew = $this->con()->prepare('SELECT :coluna FROM formulario where instituicaoID = :instituicaoID and transcricao_ok = 1 ORDER BY formID DESC;');
+
+        $selectNew->bindValue(':instituicaoID', $instituicaoID, PDO::PARAM_INT);
+        $selectNew->bindParam(':coluna', $campo, PDO::PARAM_STR);
+
+        $selectNew->execute();
+
+        $count = $selectNew->rowCount();
+
+        if ($count > 0) {
+            include "../view/leitura_pulpito/$arquivo.php";
+        } else {
+            echo '<h1 style="text-align: center;"> Não há nenhum Registro </h1>';
+        }
     }
 
     public function exibeApresentacao()
@@ -213,5 +233,5 @@ class LeituraFormulário extends Conexao
         }
     }
 }
-$FormLeitura = new LeituraFormulário;
+$FormLeitura = new Formulário;
 $FormLeitura->selectDados();

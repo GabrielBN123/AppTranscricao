@@ -328,8 +328,8 @@ h5.dropdown_btn {
 /* toggler password button */
 
 .btn_view_pass {
-    border: solid #092f5f 1px;
-    font-size: 15pt;
+    /* border: solid #092f5f 1px; */
+    font-size: 14.5pt;
     color: white;
     border-radius: 5px;
     padding: 0.5vw 1vw 0.8vw;
@@ -340,12 +340,55 @@ h5.dropdown_btn {
     outline: none;
 }
 
+@media screen and (max-width: 450px) {
+    .btn_view_pass {
+        font-size: 23.5pt;
+    }
+    .div_btn_showPass {
+        padding-top: 8px !important;
+    }
+    .tela_log_cad {
+        /* top: 5%;
+        left: 0px; */
+        position: static;
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+    .fundo::before {
+        display: none;
+    }
+}
+
 .pass_view_on {
     display: none;
 }
 
 .select_formID {
     width: 10vw;
+    margin: 10px 0px 10px 4px;
+    padding: 4px 4px;
+    border: #082750 2px solid;
+    border-radius: 6px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    font-size: 15pt;
+    color: #212529;
+    font-family: arial, sans-serif;
+}
+
+.btn_selectID {
+    font-size: 14pt;
+    padding: 4px 14px;
+    border-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    /* border: #082750 solid 2px; */
+    background-color: #082750;
+    color: white;
+    font-weight: 500;
+    margin-left: -5px;
+    outline: none;
+    border: none;
 }
 
 

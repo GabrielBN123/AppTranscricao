@@ -19,7 +19,7 @@ $FormLeitura = new Formulario;
                                 <!-- <option value="null">Selecione o numero do Formulário</option> -->
                                 <?php $FormLeitura->quantidadeFormularios();  ?>
                             </select>
-                            <button>Pesquisar</button>
+                            <button class="btn_selectID"><i class="fas fa-search"></i></button>
                         </div>
 
                     </form>

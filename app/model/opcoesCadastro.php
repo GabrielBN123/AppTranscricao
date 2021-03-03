@@ -5,11 +5,11 @@ require 'conexao.php';
 class Opcoes extends Conexao{
 
     public function getListFunctions(){
-        $stmt = $this->con()->prepare('select * from campo');
+        $stmt = $this->con()->prepare('select * from campo where exibe = 1');
         $stmt->execute();
         $dados = $stmt->fetchAll();
         foreach($dados as $value){
-            echo "<option selected value={$value['campoID']}>{$value['nome_campo']}</option>";
+            echo "<option value={$value['campoID']}>{$value['nome_campo']}</option>";
         }
     }
 
@@ -18,7 +18,7 @@ class Opcoes extends Conexao{
         $stmt->execute();
         $dados = $stmt->fetchAll();
         foreach($dados as $value){
-            echo "<option selected value={$value['instituicaoID']}>{$value['decricao_instituicao']}</option>";
+            echo "<option value={$value['instituicaoID']}>{$value['decricao_instituicao']}</option>";
         }
     }
 
