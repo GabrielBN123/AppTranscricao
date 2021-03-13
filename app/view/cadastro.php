@@ -7,11 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastrar</title>
     <?php
-    include('../controller/carregar_js_css.php');
-    include('../model/opcoesCadastro.php');
-    $exibir = new Opcoes;
+    // include('../controller/carregar_js_css.php');
+    // include('../model/opcoesCadastro.php');
+    // $exibir = new Opcoes;
     ?>
-
 </head>
 
 <body>
@@ -29,7 +28,7 @@
                     <div class="input_div">
                         <label for="foto" class="label_foto">
                             <div class="div_foto rounded-circle">
-                                <img src="<?php echo baseURl ?>assets/img/user-regular.svg" alt=" " class="rounded-circle show_image_up" id="show_foto" alt="">
+                                <img src="<?php var_dump($baseUrl);  //echo baseURl  ?>assets/img/user-regular.svg" alt=" " class="rounded-circle show_image_up" id="show_foto" alt="">
                             </div>
                             Foto
                         </label>
@@ -56,7 +55,7 @@
                         <br>
                         <select class="form-select mt-2 form-select-lg" name="area_atuacao" id="atuacao" aria-label="Default select example">
                             <option selected value="null">Escolha a Função</option>
-                            <?php $exibir->getListFunctions(); ?>
+                            <?php // $exibir->getListFunctions(); ?>
                         </select>
                     </div>
                     <div class="input_div form-group">
@@ -65,7 +64,7 @@
                         <select class="form-select mt-2 form-select-lg" name="instituicao" id="instituicao" aria-label="Default select example">
 
                             <option selected value="null">Escolha uma Opção</option>
-                            <?php $exibir->getListInstituicao(); ?>
+                            <?php // $exibir->getListInstituicao(); ?>
                         </select>
                     </div>
                     <?php

@@ -1,5 +1,27 @@
 <?php
 /*
+Nova atualização:
+
+config.php:
+será definido todas as configurações, loaders e outros.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/ 
+
+/*
 Guias usadas 
 
 DevMedia
@@ -91,4 +113,5 @@ mysqli_stmt_close($stmt);
 mysqli_close($conexao);
 
  */
+
 ?>
