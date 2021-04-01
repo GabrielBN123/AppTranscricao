@@ -7,8 +7,10 @@ $(document).ready(function() {
         }
         if ($('#email').val() == "" && $('#email').val() == "") {
             $("#cad_btn").attr('disabled', 'disabled');
+            $("#cad_btn").attr('title', 'Preencha os campos obrigatórios');
         } else {
             $("#cad_btn").removeAttr('disabled');
+            $("#cad_btn").removeAttr('title');
         }
     });
 
