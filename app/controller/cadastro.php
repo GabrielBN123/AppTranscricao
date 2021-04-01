@@ -42,17 +42,18 @@ class Cadastro extends Conexao
         $loader->loadCSS('css.css');
         $loader->loadCSS('all.css');
 
-        $loader->loadJS('js_cadastro.js');
+        $loader->loadJS('jquery-3.5.1.min.js');
         $loader->loadJS('all.js');
+        $loader->loadJS('js_cadastro.js');
 
         //$loader->baseUrl(); para pegar a base
 
         if (isset($_POST['cadastrar'])) {
-            if($_POST['cadastrar'] == 'Sim')
-            $this->cadastrar();
+            if ($_POST['cadastrar'] == 'Sim')
+                $this->cadastrar();
             header('location: login.php');
         }
-        
+
         include($loader->loadViewBase() . "app/view/$pagina");
     }
 }

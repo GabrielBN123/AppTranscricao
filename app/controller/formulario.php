@@ -150,4 +150,4 @@ class Formulario extends Conexao
 }
 
 $load = new Formulario;
-$load->index('carregaForm.php');
+$load->index('formulario.php');

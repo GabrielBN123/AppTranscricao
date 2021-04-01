@@ -6,15 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastrar</title>
-    <?php
-    // include('../controller/carregar_js_css.php');
-    // include('../model/opcoesCadastro.php');
-    // $exibir = new Opcoes;
-    ?>
+    <link rel='shortcut icon' href='<?php echo $loader->baseURl(); ?>assets/img/assembleia-de-deus-logo-5B9F4FA7AB-seeklogo.com.ico' />
 </head>
 
 <body>
-
     <div class="fundo">
     </div>
     <div class="row h-100 painel_log_cadastro col-md-12 col-lg-4">
@@ -24,22 +19,16 @@
             </div>
             <div class="form my-5 mx-5">
                 <form action="" method="POST" enctype="multipart/form-data">
-                    <!-- <form method="POST" enctype="multipart/form-data"> -->
                     <div class="input_div">
                         <label for="foto" class="label_foto">
                             <div class="div_foto rounded-circle">
-                                <img src="<?php  echo $loader->baseUrl()  ?>assets/img/user-regular.svg" alt=" " class="rounded-circle show_image_up" id="show_foto" alt="">
+                                <img src="<?php echo $loader->baseUrl()  ?>assets/img/user-regular.svg" alt=" " class="rounded-circle show_image_up" id="show_foto" alt="">
                             </div>
                             Foto
                         </label>
                         <input type="hidden" name="MAX_FILE_SIZE" value="99999999" />
                         <input type="file" class="input_foto" onchange="loadFile(event)" name="Foto" accept="image/x-png,image/gif,image/jpeg" id="foto">
                     </div>
-                    <!-- <div class="input_div form-group">
-                        <label for="email" class="label_cadastro">senha</label>
-                        <br>
-                        <input class="form-control mt-2 form-control-lg" name="senha" type="text" id="senha" placeholder="Senha" aria-label=".form-control-lg example">
-                    </div> -->
                     <div class="input_div form-group">
                         <label for="email" class="label_cadastro">E-mail</label>
                         <br>
@@ -63,15 +52,10 @@
                         <br>
                         <?php ?>
                         <select class="form-select mt-2 form-select-lg" name="instituicao" id="instituicao" aria-label="Default select example">
-
                             <option selected value="null">Escolha uma Opção</option>
                             <?php echo $user_insert->carregaInstituicoes(); ?>
                         </select>
                     </div>
-                    <?php
-                    // Não encontrou sua Instituição? <a href="cadastroInstituicao.php">Cadastrar nova</a>
-                    // <br><br>
-                    ?>
                     Já é Cadastrado? <a href="login.php">Entrar</a>
                     <br><br>
                     <input type="submit" value="Sim" name="cadastrar" class="input_btn">
@@ -79,7 +63,6 @@
             </div>
         </div>
     </div>
-    <!-- <script src="../../assets/js/js_cadastro.js"></script> -->
 </body>
 
 </html>
