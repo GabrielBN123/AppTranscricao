@@ -5,10 +5,10 @@
         <div class="col-md-12 p-4 bg-light  rounded  corpo_form">
             <div class="col-md-12 col-lg-12">
                 <div class="col-md-12">
-                    <form method="post" action="../model/cadastroFormulario.php" class="needs-validation" novalidate>
+                    <form method="post" action="" class="needs-validation" novalidate>
                         <div class="row">
-                            <input type="number" name="idUsuario" id="" value="<?php echo $usuarioID; ?>" hidden>
-                            <input type="number" name="instituicao" id="" value="<?php echo $instituicao; ?>" hidden>
+                            <input type="number" name="idUsuario" id="" value="<?php echo $this->usuarioID; ?>" hidden>
+                            <input type="number" name="instituicao" id="" value="<?php echo $this->instituicao; ?>" hidden>
                             <div class="col-md-12 resp_12 col-lg-6 mb-3">
                                 <label for="apre" class="form-label">
                                     <h5>Apresentação Visitante</h5>
@@ -77,7 +77,7 @@
                             </div>
 
                             <hr>
-                            <button class="col-md-12 col-lg-2 btn btn-primary btn-lg btn_form" type="submit">Enviar</button>
+                            <button class="col-md-12 col-lg-2 btn btn-primary btn-lg btn_form" type="submit" value="Sim" name="cadastrarFormulario">Enviar</button>
                         </div>
                     </form>
                 </div>

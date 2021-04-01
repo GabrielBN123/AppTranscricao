@@ -2,26 +2,11 @@
 <html>
 
 <head>
-    <?php
-    // define('baseURl', 'http://localhost/front/');
-    // define('baseURl', '../../');
-
-    session_start();
-
-    if ((isset($_SESSION['id']) == true) && (isset($_SESSION['nome_usuario']) == true)) {
-        header("Location:carregaForm.php");
-    }
-
-    ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Entrar Transcrição</title>
-    <?php include('../controller/carregar_js_css.php'); ?>
-    <!-- <link rel="stylesheet" href="<?php echo baseURl; ?>assets/css/bootstrap.css"> -->
-    <!-- <link rel="stylesheet" href="<?php echo baseURl; ?>assets/css/bootstrap.min.css"> -->
-    <!-- <link rel="stylesheet" href="<?php echo baseURl; ?>assets/css/css.css"> -->
-    <!-- <script src="<?php echo baseURl; ?>assets/js/jquery-3.5.1.min.js"></script> -->
+    <link rel='shortcut icon' href='<?php echo $loader->baseURl(); ?>assets/img/assembleia-de-deus-logo-5B9F4FA7AB-seeklogo.com.ico' />
 </head>
 
 <body>
@@ -33,7 +18,7 @@
                 <h1 class="titulo_h1_cadastro">Entrar</h1>
             </div>
             <div class="form my-5 mx-5">
-                <form action="../model/login.php" method="POST">
+                <form action="" method="POST">
                     <div class="input_div form-group">
                         <label for="nome" class="label_cadastro">E-mail</label>
                         <br>
@@ -58,7 +43,7 @@
                     </div>
                     não possui Cadastro? <a href="cadastro.php">Cadastrar</a>
                     <br><br>
-                    <input type="submit" value="Entrar" class="input_btn">
+                    <input type="submit" value="Sim" name="entrar" class="input_btn">
                 </form>
             </div>
         </div>

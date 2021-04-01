@@ -1,7 +1,3 @@
-<?php
-include('../model/leituraPulpito.php');
-?>
-
 <title>Leitura</title>
 <div class="container">
     <div class="row py-5 fundo_img">
@@ -17,7 +13,7 @@ include('../model/leituraPulpito.php');
                                 <?php
                                 // $FormLeitura->exibeDados('apresentacaoVisitante', 'apresentacao');
                                 // echo '<hr>';
-                                $FormLeitura->exibeApresentacao();
+                                $form->exibeApresentacao();
                                 ?>
                             </div>
                         </div>
@@ -27,7 +23,7 @@ include('../model/leituraPulpito.php');
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $FormLeitura->exibeAviso();
+                                $form->exibeAviso();
                                 ?>
                             </div>
                         </div>
@@ -37,7 +33,7 @@ include('../model/leituraPulpito.php');
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $FormLeitura->exibePedidoOracao();
+                                $form->exibePedidoOracao();
                                 ?>
                             </div>
                         </div>
@@ -47,7 +43,7 @@ include('../model/leituraPulpito.php');
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $FormLeitura->exibeFelicitacao();
+                                $form->exibeFelicitacao();
                                 ?>
                             </div>
                         </div>
@@ -57,7 +53,7 @@ include('../model/leituraPulpito.php');
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $FormLeitura->exibePedidoLouvor();
+                                $form->exibePedidoLouvor();
                                 ?>
                             </div>
                         </div>
@@ -67,7 +63,7 @@ include('../model/leituraPulpito.php');
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $FormLeitura->exibeAcaoGraca();
+                                $form->exibeAcaoGraca();
                                 ?>
                             </div>
                         </div>
@@ -77,7 +73,7 @@ include('../model/leituraPulpito.php');
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $FormLeitura->exibeApresentacaoRN();
+                                $form->exibeApresentacaoRN();
                                 ?>
                             </div>
                         </div>
@@ -87,7 +83,7 @@ include('../model/leituraPulpito.php');
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $FormLeitura->exibePedidoComunhao();
+                                $form->exibePedidoComunhao();
                                 ?>
                             </div>
                         </div>
@@ -97,7 +93,7 @@ include('../model/leituraPulpito.php');
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $FormLeitura->exibeCartaApresentacao();
+                                $form->exibeCartaApresentacao();
                                 ?>
                             </div>
                         </div>
@@ -110,5 +106,3 @@ include('../model/leituraPulpito.php');
         </div>
     </div>
 </div>
-<script src="../../assets/js/pulpito.js"></script>
-<!-- <script src="../../assets/js/ajax.js"></script> -->

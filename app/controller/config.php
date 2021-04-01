@@ -25,9 +25,9 @@ class Config
         echo "<script src='" . $this->baseURl() . "assets/js/$arquivoJS'></script> \n";
     }
 
-    public function loadView($pagina)
+    public function loadViewBase()
     {
-        define('URLBasePage', $_SERVER['DOCUMENT_ROOT'] .  'AppTranscricao/', TRUE);
-        include URLBasePage . 'app/view/' . $pagina;
+        return $_SERVER['DOCUMENT_ROOT'] .  'AppTranscricao/'; //define('URLBasePage', , TRUE);
+        // include URLBasePage . 'app/view/' . $pagina;
     }
 }

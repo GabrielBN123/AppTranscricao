@@ -8,121 +8,30 @@
     <meta charset="UTF-8">
     <meta name="author" content="Layssa Matos e Gabriel Batista" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include('../controller/carregar_js_css.php'); ?>
+
     <link rel="stylesheet" href="../../assets/css/css_formulario.css">
-
-    <style>
-        /* @media screen and (min-width: 1025px) {
-            .col-lg-6 {
-                flex: 0 0 auto !important;
-                width: 50%!important;
-            }
-        } */
-    </style>
-
-    <!-- adicionado modo local -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" -->
-    <!-- integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> -->
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="../../assets/img/assembleia-de-deus-logo-5B9F4FA7AB-seeklogo.com.ico" />
-    <!-- <title>Formulário</title> -->
-
 </head>
-
-<?php
-
-session_start();
-
-
-if ((!isset($_SESSION['id']) == true) && (!isset($_SESSION['nome_usuario']) == true)) {
-
-    unset($_SESSION['id']);
-    unset($_SESSION['nome_usuario']);
-
-    header("Location:../view/login.php");
-}
-
-$usuarioID = $_SESSION['id'];
-$nome_usuario = $_SESSION['nome_usuario'];
-$atuacao_usuario = $_SESSION['atuacao'];
-$instituicao = $_SESSION['instituicao'];
-?>
-
 
 <body>
     <!--formulário-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../model/logout.php"><i class="fas fa-arrow-circle-left"></i> Sair</a>
+            <a class="navbar-brand" href="?sair=Sim"><i class="fas fa-arrow-circle-left"></i> Sair</a>
             <h2 class="mb-1 rounded bg-light py-3" id="form">Igreja Evangélica Assembléia de Deus Cuiabá </h2>
         </div>
     </nav>
     <div class="tudo">
         <?php
-
-        switch ($atuacao_usuario) {
-            case '1':
-                # code...
-                include('forms/recepcao.php');
-
-                break;
-
-            case '2':
-                # code...
-                include('forms/transcricao.php');
-                echo '<script src="../../assets/js/transcricao.js"></script>';
-
-
-                break;
-
-            case '3':
-                # code...
-                include('forms/pulpito.php');
-
-                break;
-
-            default:
-                # code...
-                break;
-        }
-
-        // if (isset($_GET['btnSelecao'])) {
-        //     $load_form = $_GET['btnSelecao'];
-
-        //     switch ($load_form) {
-        //         case 'form_Recepcao':
-        //             // echo $load_form;
-        //             include('forms/recepcao.php');
-        //             break;
-
-        //         case 'form_Transcricao':
-        //             // echo $load_form;
-        //             include('forms/transcricao.php');
-        //             break;
-
-        //         case 'form_Pulpito':
-        //             // echo $load_form;
-        //             include('forms/pulpito.php');
-        //             # code...
-        //             break;
-
-        //         default:
-        //             include('forms/recepcao.php');
-        //             // echo 'Nenhum formulário';
-        //             break;
-        //     }
-        // } else {
-        //     // include('forms/recepcao.php');
-        //     echo 'erro';
-        // }
+        include("forms/" . $this->carregaFormulario());
         ?>
     </div>
     <!-- <button class="btn_chat"><i class="far fa-comment-dots"></i></button> -->
 
     <!--Footer-->
     <footer class="footer">
-         Apptranscrição Copyright &#169; 2020 | Todos os Direitos Reservados | Desenvolvido por Husai Tecnologia CNPJ - 20.166.924/0001-70
+        Apptranscrição Copyright &#169; 2020 | Todos os Direitos Reservados | Desenvolvido por Husai Tecnologia CNPJ - 20.166.924/0001-70
     </footer>
 
     <script src="../../assets/js/chat.js"></script>
