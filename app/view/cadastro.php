@@ -58,7 +58,7 @@
                     </div>
                     Já é Cadastrado? <a href="login.php">Entrar</a>
                     <br><br>
-                    <input type="submit" value="Sim" name="cadastrar" class="input_btn">
+                    <input type="submit" value="Cadastrar" name="cadastrar" id="cad_btn" class="input_btn">
                 </form>
             </div>
         </div>

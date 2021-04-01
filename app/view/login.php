@@ -43,7 +43,7 @@
                     </div>
                     não possui Cadastro? <a href="cadastro.php">Cadastrar</a>
                     <br><br>
-                    <input type="submit" value="Sim" name="entrar" class="input_btn">
+                    <input type="submit" value="Entrar" name="entrar" class="input_btn">
                 </form>
             </div>
         </div>

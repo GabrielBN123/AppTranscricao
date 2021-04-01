@@ -5,6 +5,11 @@ $(document).ready(function() {
         } else {
             $(this).css({ "border-color": "green" });
         }
+        if ($('#email').val() == "" && $('#email').val() == "") {
+            $("#cad_btn").attr('disabled', 'disabled');
+        } else {
+            $("#cad_btn").removeAttr('disabled');
+        }
     });
 
 

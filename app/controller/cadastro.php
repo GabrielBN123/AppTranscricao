@@ -27,8 +27,6 @@ class Cadastro extends Conexao
 
     public function index($pagina)
     {
-        $title = "Cadastro";
-
         include('config.php');
 
         define('baseModel', $_SERVER['DOCUMENT_ROOT'] .  'AppTranscricao/', TRUE);
@@ -49,7 +47,7 @@ class Cadastro extends Conexao
         //$loader->baseUrl(); para pegar a base
 
         if (isset($_POST['cadastrar'])) {
-            if ($_POST['cadastrar'] == 'Sim')
+            if ($_POST['cadastrar'] == 'Cadastrar')
                 $this->cadastrar();
             header('location: login.php');
         }

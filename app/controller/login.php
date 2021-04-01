@@ -49,7 +49,7 @@ class Login extends Conexao
         //$loader->baseUrl(); para pegar a base
 
         if (isset($_POST['entrar'])) {
-            if ($_POST['entrar'] == 'Sim')
+            if ($_POST['entrar'] == 'Entrar')
                 $this->logar();
             // header('location: login.php');
         }
