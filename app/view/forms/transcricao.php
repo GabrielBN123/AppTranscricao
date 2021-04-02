@@ -9,7 +9,7 @@
                         <div>
                             <select name="idForm" class="select_formID" id="">
                                 <!-- <option value="null">Selecione o numero do Formulário</option> -->
-                                <?php $form->quantidadeFormularios();  ?>
+                                <?php $this->form->quantidadeFormularios();  ?>
                             </select>
                             <button class="btn_selectID"><i class="fas fa-search"></i></button>
                         </div>
@@ -21,7 +21,7 @@
                             if (isset($_GET['idForm'])) {
                                 echo "<input type='text' hidden value={$_GET['idForm']}' name='formID'>";
                                 echo "<input type='text' hidden value={$this->usuarioID}' name='transc_usuarioID'>";
-                                $form->exibirDados($_GET['idForm']);
+                                $this->form->exibirDados($_GET['idForm']);
                             } else {
                                 echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro carregado </h1>';
                             }

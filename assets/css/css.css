@@ -409,7 +409,7 @@ h5.dropdown_btn {
 
 #composer {
     height: 62px;
-    padding: 3px 30px;
+    padding: 3px 5px;
     background-color: rgba(195, 195, 195, 0.95);
 }
 
@@ -420,7 +420,7 @@ h5.dropdown_btn {
     border: solid 1px #092e5d;
     background: #e4e4e4;
     color: #272727;
-    width: 90%;
+    width: 80%;
     outline: none;
 }
 
@@ -432,7 +432,7 @@ h5.dropdown_btn {
     font-size: 15pt;
     color: white;
     text-align: center;
-    margin: 14px 0 0;
+    margin: 3px 0 0;
     outline: none;
     border: none;
     line-height: normal;
@@ -451,7 +451,7 @@ h5.dropdown_btn {
 .long-content {
     height: fit-content;
     padding: 25px 20px;
-    font-size: 18pt;
+    font-size: 12pt;
     display: block;
 }
 
@@ -529,4 +529,13 @@ h5.dropdown_btn {
 .btn_chat:hover {
     background-color: white;
     color: black;
+}
+
+.div_chat {
+    position: fixed;
+    width: 42%;
+    height: 100%;
+    right: 0;
+    z-index: 99;
+    border-left: 3px solid #092c5b;
 }

@@ -44,8 +44,6 @@ class Formulario_model extends Conexao
             }
         } else {
             echo "<option selected value='null'>Não há nenhum Registro há ser exibido</option>";
-            // include '../view/.php';
-            // echo '<h1 style="text-align: center; margin: 10vw 0"> Não há nenhum Registro </h1>';
         }
     }
 

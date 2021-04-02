@@ -1,42 +1,25 @@
 <?php
-session_start();
-
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-require 'constants.inc.php';
-require 'DbConnPDO.class.php';
+require 'chat/constants.inc.php';
+require 'chat/DbConnPDO.class.php';
 ?>
-<!doctype html>
-<html lang="pt">
-
-<head>
-    <meta charset="utf-8">
-    <!-- <title>Chat público</title> -->
-    <meta name="description" content="Chat público" />
-    <meta name="author" content="Sandro Marques">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link href="styles.css" rel="stylesheet" /> -->
-    <link href="../../assets/css/css.css" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-</head>
-
-<body>
-    <!-- <div id="sidebar"></div> -->
+<div class="div_chat">
     <div id="primary">
         <h1 class="titulo_chat">Chat Público</h1>
         <div id="log">
             <span class="long-content">&nbsp;</span>
         </div>
         <div id="composer">
-            <form name="form_message" id="form_message" method="post" action="set_message.ajax.php">
+            <form name="form_message" id="form_message" method="post" action="chat/set_message.ajax.php">
                 <input name="nickname" type="hidden" id="nickname" value="<?php echo $_SESSION['nome_usuario']; ?>">
                 <input name="message" type="text" autofocus required class="textbox_message" id="message">
                 <button id="btn_send">Enviar</button>
             </form>
         </div>
     </div>
-</body>
+</div>
 <script>
     'use strict';
     $(document).ready(function() {
@@ -48,7 +31,7 @@ require 'DbConnPDO.class.php';
             var msg_timeout = 'O servidor não está a responder';
             var message = '';
             $.ajax({
-                url: 'get_messages.ajax.php',
+                url: 'chat/get_messages.ajax.php',
                 dataType: "json",
                 error: function(xhr, status, error) {
                     if (status === "timeout") {
@@ -69,11 +52,13 @@ require 'DbConnPDO.class.php';
                         //mostra mensagem
                         // $('.long-content').prepend('<div><div class="nome_usuario">' + item.FromNickname + ': </div><div class="mensagem_usuario">' + item.Message + '</div></div>');
                     });
-                    setTimeout(getMessages, 2000);
+                    setTimeout(getMessages, 1000);
                 },
-                timeout: 7000
+                timeout: 1000
             });
         }
+
+
 
         // submeter formulário pela função sendForm()
         $('#form_message').on('submit', function(e) {
@@ -96,5 +81,3 @@ require 'DbConnPDO.class.php';
 
     });
 </script>
-
-</html>

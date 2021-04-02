@@ -9,7 +9,7 @@ require 'Chat.class.php';
 # 1. Ler as mensagens da base de dados
 try {
     $chat = new Chat();
-    $messages = $chat->getMessages(10);
+    $messages = $chat->getMessages(1000);
     echo json_encode($messages);
 } catch (Exception $e) {
     $message = 'Ocorreu um erro.';
@@ -25,3 +25,5 @@ try {
     );
     exit;
 }
+
+

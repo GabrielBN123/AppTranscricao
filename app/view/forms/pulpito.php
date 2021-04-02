@@ -11,9 +11,9 @@
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                // $FormLeitura->exibeDados('apresentacaoVisitante', 'apresentacao');
+                                // $this->formLeitura->exibeDados('apresentacaoVisitante', 'apresentacao');
                                 // echo '<hr>';
-                                $form->exibeApresentacao();
+                                $this->form->exibeApresentacao();
                                 ?>
                             </div>
                         </div>
@@ -23,7 +23,7 @@
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $form->exibeAviso();
+                                $this->form->exibeAviso();
                                 ?>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $form->exibePedidoOracao();
+                                $this->form->exibePedidoOracao();
                                 ?>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $form->exibeFelicitacao();
+                                $this->form->exibeFelicitacao();
                                 ?>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $form->exibePedidoLouvor();
+                                $this->form->exibePedidoLouvor();
                                 ?>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $form->exibeAcaoGraca();
+                                $this->form->exibeAcaoGraca();
                                 ?>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $form->exibeApresentacaoRN();
+                                $this->form->exibeApresentacaoRN();
                                 ?>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $form->exibePedidoComunhao();
+                                $this->form->exibePedidoComunhao();
                                 ?>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                             <hr />
                             <div class="dropdown_pulpito campo_exibe_pulpito">
                                 <?php
-                                $form->exibeCartaApresentacao();
+                                $this->form->exibeCartaApresentacao();
                                 ?>
                             </div>
                         </div>

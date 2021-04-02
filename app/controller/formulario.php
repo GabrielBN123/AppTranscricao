@@ -9,9 +9,21 @@ class Formulario extends Conexao
     private $usuarioID = null;
     private $nome_usuario = null;
     private $instituicao = null;
+    private $loader = null;
+    private $form = null;
 
     public function __construct()
     {
+
+        include('config.php');
+
+        define('baseModel', $_SERVER['DOCUMENT_ROOT'] .  'AppTranscricao/', TRUE);
+
+        include(baseModel . 'app/model/formulario_model.php');
+
+        $this->loader = new Config;
+        $this->form = new Formulario_model;
+
         // valida se já está logado, falta iniciar
         session_start();
 
@@ -53,23 +65,21 @@ class Formulario extends Conexao
 
     public function salvarAlteracaoForm()
     {
-        $form = new Formulario_model;
+        isset($_POST['apresentacao']) ? $this->form->setApresentacao($_POST['apresentacao']) : $this->form->setApresentacao(null);
+        isset($_POST['aviso']) ? $this->form->setAvisos($_POST['aviso']) : $this->form->setAvisos(null);
+        isset($_POST['cartaApp']) ? $this->form->setCartaApresentacao($_POST['cartaApp']) : $this->form->setCartaApresentacao(null);
+        isset($_POST['acaoGraca']) ? $this->form->setAcaoGraca($_POST['acaoGraca']) : $this->form->setAcaoGraca(null);
+        isset($_POST['pedidoOracao']) ? $this->form->setPedidoOracao($_POST['pedidoOracao']) : $this->form->setPedidoOracao(null);
+        isset($_POST['apresentacaoRN']) ? $this->form->setApresentaRN($_POST['apresentacaoRN']) : $this->form->setApresentaRN(null);
 
-        isset($_POST['apresentacao']) ? $form->setApresentacao($_POST['apresentacao']) : $form->setApresentacao(null);
-        isset($_POST['aviso']) ? $form->setAvisos($_POST['aviso']) : $form->setAvisos(null);
-        isset($_POST['cartaApp']) ? $form->setCartaApresentacao($_POST['cartaApp']) : $form->setCartaApresentacao(null);
-        isset($_POST['acaoGraca']) ? $form->setAcaoGraca($_POST['acaoGraca']) : $form->setAcaoGraca(null);
-        isset($_POST['pedidoOracao']) ? $form->setPedidoOracao($_POST['pedidoOracao']) : $form->setPedidoOracao(null);
-        isset($_POST['apresentacaoRN']) ? $form->setApresentaRN($_POST['apresentacaoRN']) : $form->setApresentaRN(null);
+        isset($_POST['felicitacao']) ? $this->form->setFelicitacao($_POST['felicitacao']) : $this->form->setPedidoLouvor(null);
+        isset($_POST['pedidoLouvor']) ? $this->form->setPedidoLouvor($_POST['pedidoLouvor']) : $this->form->setPedidoLouvor(null);
+        isset($_POST['pedidoComunhao']) ? $this->form->setPedidoComunhao($_POST['pedidoComunhao']) : $this->form->setPedidoComunhao(null);
 
-        isset($_POST['felicitacao']) ? $form->setFelicitacao($_POST['felicitacao']) : $form->setPedidoLouvor(null);
-        isset($_POST['pedidoLouvor']) ? $form->setPedidoLouvor($_POST['pedidoLouvor']) : $form->setPedidoLouvor(null);
-        isset($_POST['pedidoComunhao']) ? $form->setPedidoComunhao($_POST['pedidoComunhao']) : $form->setPedidoComunhao(null);
+        $this->form->setFormID($_POST['formID']);
+        $this->form->setUsuarioAlteradoID($_POST['transc_usuarioID']);
 
-        $form->setFormID($_POST['formID']);
-        $form->setUsuarioAlteradoID($_POST['transc_usuarioID']);
-
-        $form->salvaAlteracaoFormulario();
+        $this->form->salvaAlteracaoFormulario();
     }
 
     public function logout()
@@ -82,43 +92,45 @@ class Formulario extends Conexao
 
     public function criaNovoFormulario()
     {
-        $form = new Formulario_model;
+        $this->form->setIdUsuario($_SESSION['id']);
+        $this->form->setApresentacao($_POST['apresentacao']);
+        $this->form->setAvisos($_POST['aviso']);
+        $this->form->setCartaApresentacao($_POST['cartaApp']);
+        $this->form->setAcaoGraca($_POST['acaoGraca']);
+        $this->form->setPedidoOracao($_POST['pedidoOracao']);
+        $this->form->setApresentaRN($_POST['apresentacaoRN']);
 
-        $form->setIdUsuario($_SESSION['id']);
-        $form->setApresentacao($_POST['apresentacao']);
-        $form->setAvisos($_POST['aviso']);
-        $form->setCartaApresentacao($_POST['cartaApp']);
-        $form->setAcaoGraca($_POST['acaoGraca']);
-        $form->setPedidoOracao($_POST['pedidoOracao']);
-        $form->setApresentaRN($_POST['apresentacaoRN']);
+        $this->form->setFelicitacao($_POST['felicitacoes']);
+        $this->form->setPedidoLouvor($_POST['pedidoLouvor']);
+        $this->form->setPedidoComunhao($_POST['pedidoComunhao']);
 
-        $form->setFelicitacao($_POST['felicitacoes']);
-        $form->setPedidoLouvor($_POST['pedidoLouvor']);
-        $form->setPedidoComunhao($_POST['pedidoComunhao']);
+        $this->form->setInstituicao($_POST['instituicao']);
+        $this->form->criaFormulario();
+    }
 
-        $form->setInstituicao($_POST['instituicao']);
-        $form->criaFormulario();
+    public function chat()
+    {
+        define('baseChat', $_SERVER['DOCUMENT_ROOT'] .  'AppTranscricao/app/controller/chat/', TRUE);
+
+        // require baseChat . 'constants.inc.php';
+        // require baseChat . 'DbConnPDO.class.php';
+        // echo '<iframe src="'.baseChat.'chat.php" frameborder="0"></iframe>';
+        require baseChat . 'Chat.php';
     }
 
     public function index($pagina)
     {
-        include('config.php');
 
-        define('baseModel', $_SERVER['DOCUMENT_ROOT'] .  'AppTranscricao/', TRUE);
 
-        include(baseModel . 'app/model/formulario_model.php');
+        $this->loader->loadCSS('bootstrap.min.css');
+        $this->loader->loadCSS('css.css');
+        $this->loader->loadCSS('all.css');
+        $this->loader->loadCSS('css_formulario.css');
 
-        $loader = new Config;
-        $form = new Formulario_model;
-
-        $loader->loadCSS('bootstrap.min.css');
-        $loader->loadCSS('css.css');
-        $loader->loadCSS('all.css');
-        $loader->loadCSS('css_formulario.css');
-
-        $loader->loadJS('all.js');
-        $loader->loadJS('jquery-3.5.1.min.js');
-        $loader->loadJS('pulpito.js');
+        $this->loader->loadJS('all.js');
+        $this->loader->loadJS('jquery-3.5.1.min.js');
+        // $this->loader->loadJS('chat.js');
+        $this->loader->loadJS('pulpito.js');
 
         //$loader->baseUrl(); para pegar a base
 
@@ -138,14 +150,16 @@ class Formulario extends Conexao
             }
         }
 
-        
+
         if (isset($_GET['sair'])) {
             if ($_GET['sair'] == 'Sim') {
                 $this->logout();
             }
         }
 
-        include($loader->loadViewBase() . "app/view/$pagina");
+        $this->chat();
+
+        include($this->loader->loadViewBase() . "app/view/$pagina");
     }
 }
 
