@@ -23,6 +23,11 @@ require 'chat/DbConnPDO.class.php';
 <script>
     'use strict';
     $(document).ready(function() {
+        // function setTopo() {
+        //     $(window).scrollTop(0);
+        // }
+        // $(window).bind('scroll', setTopo);
+        
         getMessages();
 
         function getMessages() {
@@ -49,8 +54,6 @@ require 'chat/DbConnPDO.class.php';
                         } else {
                             $('.long-content').prepend('<p style="width: 100%;text-align: left;"><span class="nome_usuario"><b>' + item.FromNickname + '</b>: ' + item.Message + '</span></p>');
                         }
-                        //mostra mensagem
-                        // $('.long-content').prepend('<div><div class="nome_usuario">' + item.FromNickname + ': </div><div class="mensagem_usuario">' + item.Message + '</div></div>');
                     });
                     setTimeout(getMessages, 1000);
                 },
