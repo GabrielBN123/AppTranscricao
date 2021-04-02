@@ -42,7 +42,7 @@ class Cadastro extends Conexao
 
         $loader->loadJS('jquery-3.5.1.min.js');
         $loader->loadJS('all.js');
-        $loader->loadJS('js_cadastro.js');
+        $loader->loadJS('cadastro.js');
 
         //$loader->baseUrl(); para pegar a base
 
