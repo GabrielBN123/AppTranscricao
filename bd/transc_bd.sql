@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Tempo de geração: 14-Fev-2021 às 00:23
--- Versão do servidor: 10.4.17-MariaDB
--- versão do PHP: 8.0.1
+-- Host: localhost
+-- Generation Time: 02-Abr-2021 às 07:39
+-- Versão do servidor: 5.7.11
+-- PHP Version: 7.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -18,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `transc_bd`
+-- Database: `transc_bd`
 --
 
 -- --------------------------------------------------------
@@ -30,17 +29,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `campo` (
   `campoID` int(10) NOT NULL,
   `nome_campo` varchar(45) NOT NULL,
-  `descricao_campo` varchar(255) DEFAULT NULL
+  `descricao_campo` varchar(255) DEFAULT NULL,
+  `exibe` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `campo`
 --
 
-INSERT INTO `campo` (`campoID`, `nome_campo`, `descricao_campo`) VALUES
-(1, 'recepcao', 'Recepção'),
-(2, 'trancricao', 'Transcrição'),
-(3, 'pulpito', 'Púlpito');
+INSERT INTO `campo` (`campoID`, `nome_campo`, `descricao_campo`, `exibe`) VALUES
+(1, 'recepcao', 'Recepção', 1),
+(2, 'trancricao', 'Transcrição', 1),
+(3, 'pulpito', 'Púlpito', 1),
+(4, 'admin', 'Administrador', 0);
 
 -- --------------------------------------------------------
 
@@ -50,19 +51,19 @@ INSERT INTO `campo` (`campoID`, `nome_campo`, `descricao_campo`) VALUES
 
 CREATE TABLE `formulario` (
   `formID` int(11) NOT NULL,
-  `apresentacaoVisitante` longtext DEFAULT NULL,
-  `aviso` longtext DEFAULT NULL,
-  `cartaApresentacao` longtext DEFAULT NULL,
-  `acaoGraca` longtext DEFAULT NULL,
-  `pedidoOracao` longtext DEFAULT NULL,
-  `apresentacaoRN` longtext DEFAULT NULL,
+  `apresentacaoVisitante` longtext,
+  `aviso` longtext,
+  `cartaApresentacao` longtext,
+  `acaoGraca` longtext,
+  `pedidoOracao` longtext,
+  `apresentacaoRN` longtext,
   `inscritorID` int(11) NOT NULL,
   `instituicaoID` int(11) NOT NULL,
   `transcricao_ok` tinyint(1) DEFAULT NULL,
   `alterado_por_usuario` int(11) DEFAULT NULL,
-  `felicitacoes` longtext DEFAULT NULL,
-  `pedidoLouvor` longtext DEFAULT NULL,
-  `pedidoComunhao` longtext DEFAULT NULL
+  `felicitacoes` longtext,
+  `pedidoLouvor` longtext,
+  `pedidoComunhao` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -87,6 +88,19 @@ INSERT INTO `instituicao` (`instituicaoID`, `nome_instituicao`, `decricao_instit
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `messages`
+--
+
+CREATE TABLE `messages` (
+  `IdMessage` int(8) NOT NULL COMMENT '(PK) ID da mensagem',
+  `FromNickname` varchar(32) NOT NULL COMMENT 'Nickname do remetente',
+  `Message` text COMMENT 'Mensagem',
+  `MessageDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Data da mensagem'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Mensagens do chat';
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuarios`
 --
 
@@ -98,7 +112,7 @@ CREATE TABLE `usuarios` (
   `instituicaoID` int(11) NOT NULL,
   `foto_usuario` varchar(255) NOT NULL,
   `senha_usuario` varchar(25) NOT NULL DEFAULT '123456',
-  `data_cadastro` timestamp NOT NULL DEFAULT current_timestamp(),
+  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `email_usuario` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -112,17 +126,17 @@ INSERT INTO `usuarios` (`userID`, `nome_usuario`, `nick_usuario`, `area_atuaID`,
 (22, 'Pulpito', NULL, 3, 1, 'ed8db1af5caa3fd1a4e4283d3e244d77.png', 'pulpito', '2021-02-13 21:41:06', 'pulpito@apptranscricao.com');
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `campo`
+-- Indexes for table `campo`
 --
 ALTER TABLE `campo`
   ADD PRIMARY KEY (`campoID`);
 
 --
--- Índices para tabela `formulario`
+-- Indexes for table `formulario`
 --
 ALTER TABLE `formulario`
   ADD PRIMARY KEY (`formID`),
@@ -131,13 +145,19 @@ ALTER TABLE `formulario`
   ADD KEY `alterado_por_usuario` (`alterado_por_usuario`);
 
 --
--- Índices para tabela `instituicao`
+-- Indexes for table `instituicao`
 --
 ALTER TABLE `instituicao`
   ADD PRIMARY KEY (`instituicaoID`);
 
 --
--- Índices para tabela `usuarios`
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`IdMessage`);
+
+--
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`userID`),
@@ -145,35 +165,36 @@ ALTER TABLE `usuarios`
   ADD KEY `instituicaoID` (`instituicaoID`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `campo`
+-- AUTO_INCREMENT for table `campo`
 --
 ALTER TABLE `campo`
-  MODIFY `campoID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `campoID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT de tabela `formulario`
+-- AUTO_INCREMENT for table `formulario`
 --
 ALTER TABLE `formulario`
-  MODIFY `formID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
+  MODIFY `formID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
--- AUTO_INCREMENT de tabela `instituicao`
+-- AUTO_INCREMENT for table `instituicao`
 --
 ALTER TABLE `instituicao`
   MODIFY `instituicaoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
--- AUTO_INCREMENT de tabela `usuarios`
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `IdMessage` int(8) NOT NULL AUTO_INCREMENT COMMENT '(PK) ID da mensagem', AUTO_INCREMENT=62;
+--
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
--- Restrições para despejos de tabelas
+-- Constraints for dumped tables
 --
 
 --
@@ -190,7 +211,6 @@ ALTER TABLE `formulario`
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`area_atuaID`) REFERENCES `campo` (`campoID`),
   ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`instituicaoID`) REFERENCES `instituicao` (`instituicaoID`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
