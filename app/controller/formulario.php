@@ -129,7 +129,7 @@ class Formulario extends Conexao
 
         $this->loader->loadJS('all.js');
         $this->loader->loadJS('jquery-3.5.1.min.js');
-        // $this->loader->loadJS('chat.js');
+        $this->loader->loadJS('chat.js');
         $this->loader->loadJS('pulpito.js');
 
         //$loader->baseUrl(); para pegar a base
