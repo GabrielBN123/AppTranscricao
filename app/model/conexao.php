@@ -6,18 +6,18 @@ class Conexao
 {
 
     // Job
-    private $c = [
-        'HOST' => 'localhost',
-        'PORT' => 3306,
-        'USER' => 'root',
-        'PASS' => 'root',
-        'DBNAME' => 'transc_bd',
-        'OPTIONS' => [
-            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-        ]
-    ];
+    // private $c = [
+    //     'HOST' => 'localhost',
+    //     'PORT' => 3306,
+    //     'USER' => 'root',
+    //     'PASS' => 'root',
+    //     'DBNAME' => 'transc_bd',
+    //     'OPTIONS' => [
+    //         PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+    //         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    //         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    //     ]
+    // ];
 
     // Conexão 02
     // private $c = [
@@ -32,6 +32,20 @@ class Conexao
     //         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     //     ]
     // ];
+
+    // Desk
+    private $c = [
+        'HOST' => 'localhost',
+        'PORT' => 3306,
+        'USER' => 'root',
+        'PASS' => '',
+        'DBNAME' => 'transc_bd',
+        'OPTIONS' => [
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ]
+    ];
 
     // Conexão 03
     // private $c = [
