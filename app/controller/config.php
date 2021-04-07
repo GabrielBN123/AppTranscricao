@@ -27,7 +27,7 @@ class Config
 
     public function loadViewBase()
     {
-        return $_SERVER['DOCUMENT_ROOT'] .  'AppTranscricao/'; //define('URLBasePage', , TRUE);
+        return $_SERVER['DOCUMENT_ROOT'] .  '/AppTranscricao/'; //define('URLBasePage', , TRUE);
         // include URLBasePage . 'app/view/' . $pagina;
     }
 }

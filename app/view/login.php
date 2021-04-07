@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Entrar Transcrição</title>
-    <link rel='shortcut icon' href='<?php echo $loader->baseURl(); ?>assets/img/assembleia-de-deus-logo-5B9F4FA7AB-seeklogo.com.ico' />
+    <link rel='shortcut icon' href='<?php echo $this->loader->baseURl(); ?>assets/img/assembleia-de-deus-logo-5B9F4FA7AB-seeklogo.com.ico' />
 </head>
 
 <body>

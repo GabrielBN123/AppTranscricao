@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cadastrar</title>
-    <link rel='shortcut icon' href='<?php echo $loader->baseURl(); ?>assets/img/assembleia-de-deus-logo-5B9F4FA7AB-seeklogo.com.ico' />
+    <link rel='shortcut icon' href='<?php echo $this->loader->baseURl(); ?>assets/img/assembleia-de-deus-logo-5B9F4FA7AB-seeklogo.com.ico' />
 </head>
 
 <body>
@@ -22,7 +22,7 @@
                     <div class="input_div">
                         <label for="foto" class="label_foto">
                             <div class="div_foto rounded-circle">
-                                <img src="<?php echo $loader->baseUrl()  ?>assets/img/user-regular.svg" alt=" " class="rounded-circle show_image_up" id="show_foto" alt="">
+                                <img src="<?php echo $this->loader->baseUrl()  ?>assets/img/user-regular.svg" alt=" " class="rounded-circle show_image_up" id="show_foto" alt="">
                             </div>
                             Foto
                         </label>
@@ -44,7 +44,7 @@
                         <br>
                         <select class="form-select mt-2 form-select-lg" name="area_atuacao" id="atuacao" aria-label="Default select example">
                             <option selected value="null">Escolha a Função</option>
-                            <?php echo $user_insert->carregaCamposCadastro(); ?>
+                            <?php echo $this->user_insert->carregaCamposCadastro(); ?>
                         </select>
                     </div>
                     <div class="input_div form-group">
@@ -53,7 +53,7 @@
                         <?php ?>
                         <select class="form-select mt-2 form-select-lg" name="instituicao" id="instituicao" aria-label="Default select example">
                             <option selected value="null">Escolha uma Opção</option>
-                            <?php echo $user_insert->carregaInstituicoes(); ?>
+                            <?php echo $this->user_insert->carregaInstituicoes(); ?>
                         </select>
                     </div>
                     Já é Cadastrado? <a href="login.php">Entrar</a>

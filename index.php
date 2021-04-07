@@ -8,10 +8,10 @@ if ((!isset($_SESSION['id']) == true) && (!isset($_SESSION['nome_usuario']) == t
     unset($_SESSION['id']);
     unset($_SESSION['nome_usuario']);
 
-    header("Location:app/view/login.php");
+    header("Location:app/controller/login.php");
 }
 else{
-    header('location: app/view/carregaForm.php');
+    // header('location: app/view/carregaForm.php');
 }
 
 

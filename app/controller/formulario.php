@@ -11,15 +11,16 @@ class Formulario extends Conexao
     private $instituicao = null;
     private $loader = null;
     private $form = null;
+    private $baseModel = null;
+    private $baseChat = null;
 
     public function __construct()
     {
+        $this->baseModel = $_SERVER['DOCUMENT_ROOT'] .  '/AppTranscricao/';
 
-        include('config.php');
+        require('config.php');
 
-        define('baseModel', $_SERVER['DOCUMENT_ROOT'] .  'AppTranscricao/', TRUE);
-
-        include(baseModel . 'app/model/formulario_model.php');
+        require($this->baseModel . 'app/model/formulario_model.php');
 
         $this->loader = new Config;
         $this->form = new Formulario_model;
@@ -110,18 +111,16 @@ class Formulario extends Conexao
 
     public function chat()
     {
-        define('baseChat', $_SERVER['DOCUMENT_ROOT'] .  'AppTranscricao/app/controller/chat/', TRUE);
+        $this->baseChat = $_SERVER['DOCUMENT_ROOT'] .  '/AppTranscricao/app/controller/chat/';
 
         // require baseChat . 'constants.inc.php';
         // require baseChat . 'DbConnPDO.class.php';
         // echo '<iframe src="'.baseChat.'chat.php" frameborder="0"></iframe>';
-        require baseChat . 'Chat.php';
+        require $this->baseChat . 'Chat.php';
     }
 
     public function index($pagina)
     {
-
-
         $this->loader->loadCSS('bootstrap.min.css');
         $this->loader->loadCSS('css.css');
         $this->loader->loadCSS('all.css');
@@ -149,7 +148,6 @@ class Formulario extends Conexao
                 $this->salvarAlteracaoForm();
             }
         }
-
 
         if (isset($_GET['sair'])) {
             if ($_GET['sair'] == 'Sim') {

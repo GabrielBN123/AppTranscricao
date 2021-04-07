@@ -4,9 +4,23 @@ require_once('../model/conexao.php');
 
 class Login extends Conexao
 {
+    private $user_login = null;
+    private $loader = null;
+    private $baseModel = null;
 
     public function __construct()
     {
+        require('config.php');
+
+        $this->baseModel = $_SERVER['DOCUMENT_ROOT'] .  '/AppTranscricao/';
+
+        require($this->baseModel . 'app/model/login_model.php');
+
+        $this->user_login = new Login_model;
+        $this->loader = new Config;
+
+        $this->loader->loadCSS('bootstrap.min.css');
+
         // valida se já está logado, falta iniciar
         session_start();
 
@@ -17,36 +31,22 @@ class Login extends Conexao
 
     public function logar()
     {
-        $user_login = new Login_model;
+        $this->user_login->setEmail($_POST['email']);
+        $this->user_login->setSenha($_POST['senha']);
 
-        $user_login->setEmail($_POST['email']);
-        $user_login->setSenha($_POST['senha']);
-
-        $user_login->entrar();
+        $this->user_login->entrar();
     }
 
     public function index($pagina)
     {
+        $this->loader->loadCSS('bootstrap.min.css');
+        $this->loader->loadCSS('css.css');
+        $this->loader->loadCSS('all.css');
 
-        $title = "Cadastro";
+        $this->loader->loadJS('all.js');
+        $this->loader->loadJS('jquery-3.5.1.min.js');
 
-        include('config.php');
-
-        define('baseModel', $_SERVER['DOCUMENT_ROOT'] .  'AppTranscricao/', TRUE);
-
-        include(baseModel . 'app/model/login_model.php');
-
-        $loader = new Config;
-        $user_login = new Login_model;
-
-        $loader->loadCSS('bootstrap.min.css');
-        $loader->loadCSS('css.css');
-        $loader->loadCSS('all.css');
-
-        $loader->loadJS('all.js');
-        $loader->loadJS('jquery-3.5.1.min.js');
-
-        //$loader->baseUrl(); para pegar a base
+        //$this->loader->baseUrl(); para pegar a base
 
         if (isset($_POST['entrar'])) {
             if ($_POST['entrar'] == 'Entrar')
@@ -54,7 +54,7 @@ class Login extends Conexao
             // header('location: login.php');
         }
 
-        include($loader->loadViewBase() . "app/view/$pagina");
+        include($this->loader->loadViewBase() . "app/view/$pagina");
     }
 }
 

@@ -4,45 +4,51 @@ require_once('../model/conexao.php');
 
 class Cadastro extends Conexao
 {
+    private $loader = null;
+    private $user_insert = null;
+    private $baseModel = null;
 
     public function __construct()
     {
+        require('config.php');
+        
+        $this->baseModel = $_SERVER['DOCUMENT_ROOT'] .  '/AppTranscricao/';
+        
+        require($this->baseModel . 'app/model/cadastro_model.php');
+        
+        $this->user_insert = new Usuario_model;
+        $this->loader = new Config;
+
         // valida se já está logado, falta iniciar
 
+        session_start();
+
+        if ((isset($_SESSION['id']) == true) && (isset($_SESSION['nome_usuario']) == true)) {
+            header("Location:formulario.php");
+        }
     }
 
     public function cadastrar()
     {
-        $user_insert = new Usuario_model;
+        $this->user_insert->setNome($_POST['nome']);
+        $this->user_insert->setArea($_POST['area_atuacao']);
+        $this->user_insert->setInstituicao($_POST['instituicao']);
+        $this->user_insert->setEmail($_POST['email']);
+        $this->user_insert->setFoto();
+        $this->user_insert->setSenha();
 
-        $user_insert->setNome($_POST['nome']);
-        $user_insert->setArea($_POST['area_atuacao']);
-        $user_insert->setInstituicao($_POST['instituicao']);
-        $user_insert->setEmail($_POST['email']);
-        $user_insert->setFoto();
-        $user_insert->setSenha();
-
-        $user_insert->cadastraUsuario();
+        $this->user_insert->cadastraUsuario();
     }
 
     public function index($pagina)
     {
-        include('config.php');
+        $this->loader->loadCSS('bootstrap.min.css');
+        $this->loader->loadCSS('css.css');
+        $this->loader->loadCSS('all.css');
 
-        define('baseModel', $_SERVER['DOCUMENT_ROOT'] .  'AppTranscricao/', TRUE);
-
-        include(baseModel . 'app/model/cadastro_model.php');
-
-        $loader = new Config;
-        $user_insert = new Usuario_model;
-
-        $loader->loadCSS('bootstrap.min.css');
-        $loader->loadCSS('css.css');
-        $loader->loadCSS('all.css');
-
-        $loader->loadJS('jquery-3.5.1.min.js');
-        $loader->loadJS('all.js');
-        $loader->loadJS('cadastro.js');
+        $this->loader->loadJS('jquery-3.5.1.min.js');
+        $this->loader->loadJS('all.js');
+        $this->loader->loadJS('cadastro.js');
 
         //$loader->baseUrl(); para pegar a base
 
@@ -52,7 +58,7 @@ class Cadastro extends Conexao
             header('location: login.php');
         }
 
-        include($loader->loadViewBase() . "app/view/$pagina");
+        include($this->loader->loadViewBase() . "app/view/$pagina");
     }
 }
 

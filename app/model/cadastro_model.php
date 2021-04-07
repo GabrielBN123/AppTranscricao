@@ -25,7 +25,7 @@ class Usuario_model extends Conexao
 
     public function setInstituicao($instituicao)
     {
-        $this->instituicao =  intval( $instituicao);
+        $this->instituicao =  intval($instituicao);
     }
 
     public function setFoto()
@@ -90,7 +90,8 @@ class Usuario_model extends Conexao
         if ($this->getNome() != null && $this->getEmail() != null) {
             echo 'Foto: ' . $this->getFoto() . '<br>';
             try {
-                $insert = $this->con()->prepare("INSERT INTO usuarios (nome_usuario, area_atuaID, instituicaoID, foto_usuario, senha_usuario, email_usuario)
+                $insert = $this->con()->prepare(
+                    "INSERT INTO usuarios (nome_usuario, area_atuaID, instituicaoID, foto_usuario, senha_usuario, email_usuario)
                     VALUES (:nome, :areaAtua, :instituto, :foto, :senha, :email)"
                 );
                 $insert->bindValue(':nome', $this->getNome(), PDO::PARAM_STR);
@@ -122,8 +123,15 @@ class Usuario_model extends Conexao
         $stmt = $this->con()->prepare('select * from campo where exibe = 1');
         $stmt->execute();
         $dados = $stmt->fetchAll();
-        foreach($dados as $value){
-            echo "<option value={$value['campoID']}>{$value['nome_campo']}</option>";
+
+        $count = $stmt->rowCount();
+
+        if ($count > 0) {
+            foreach ($dados as $value) {
+                echo "<option value={$value['campoID']}>{$value['nome_campo']}</option>";
+            }
+        } else {
+            echo "<option value='null'>Erro de Banco</option>";
         }
     }
 
@@ -132,8 +140,15 @@ class Usuario_model extends Conexao
         $stmt = $this->con()->prepare('select * from instituicao');
         $stmt->execute();
         $dados = $stmt->fetchAll();
-        foreach($dados as $value){
-            echo "<option value={$value['instituicaoID']}>{$value['decricao_instituicao']}</option>";
+
+        $count = $stmt->rowCount();
+
+        if ($count > 0) {
+            foreach ($dados as $value) {
+                echo "<option value={$value['instituicaoID']}>{$value['decricao_instituicao']}</option>";
+            }
+        } else {
+            echo "<option value='null'>Erro de Banco</option>";
         }
     }
 }

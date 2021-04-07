@@ -2,3 +2,6 @@
 app/model/conexao.php
 app/model/conexao.php
 app/model/conexao.php
+app/controller/chat/constants.inc.php
+app/controller/chat/constants.inc.php
+app/model/conexao.php
