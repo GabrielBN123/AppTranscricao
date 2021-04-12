@@ -1,5 +1,5 @@
 
-<?php  
+<?php
 
 session_start();
 
@@ -9,10 +9,7 @@ if ((!isset($_SESSION['id']) == true) && (!isset($_SESSION['nome_usuario']) == t
     unset($_SESSION['nome_usuario']);
 
     header("Location:app/controller/login.php");
+} else {
+    header('location: app/controller/formulario.php');
 }
-else{
-    // header('location: app/view/carregaForm.php');
-}
-
-
 ?>

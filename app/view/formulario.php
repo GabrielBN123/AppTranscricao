@@ -27,7 +27,8 @@
         include("forms/" . $this->carregaFormulario());
         ?>
     </div>
-    <button class="btn_chat"><i class="far fa-comment-dots"></i></button>
+    <button class="btn_chat btn_chat_func"><i class="far fa-comment-dots"></i></button>
+    <button class="btn_chat_mobile btn_chat_func_mobile"><i class="far fa-comment-dots"></i></button>
 
     <!--Footer-->
     <footer class="footer">

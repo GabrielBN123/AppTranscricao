@@ -7,7 +7,9 @@ require 'chat/DbConnPDO.class.php';
 ?>
 <div class="div_chat">
     <div id="primary">
-        <h1 class="titulo_chat">Chat Público</h1>
+        <h1 class="titulo_chat">Chat Público 
+            <button class="close_mobile_chat"><i class="far fa-times-circle"></i></button>
+        </h1>
         <div id="log">
             <span class="long-content">&nbsp;</span>
         </div>
@@ -15,7 +17,7 @@ require 'chat/DbConnPDO.class.php';
             <form name="form_message" id="form_message" method="post" action="chat/set_message.ajax.php">
                 <input name="nickname" type="hidden" id="nickname" value="<?php echo $_SESSION['nome_usuario']; ?>">
                 <input name="message" type="text" autofocus required class="textbox_message" id="message">
-                <button id="btn_send">Enviar</button>
+                <button id="btn_send"><span class="send_message_text">Enviar</span> <span class="send_message_icon"><i class="far fa-paper-plane"></i></span> </button>
             </form>
         </div>
     </div>
@@ -27,7 +29,7 @@ require 'chat/DbConnPDO.class.php';
         //     $(window).scrollTop(0);
         // }
         // $(window).bind('scroll', setTopo);
-        
+
         getMessages();
 
         function getMessages() {
@@ -55,9 +57,9 @@ require 'chat/DbConnPDO.class.php';
                             $('.long-content').prepend('<p style="width: 100%;text-align: left;"><span class="nome_usuario"><b>' + item.FromNickname + '</b>: ' + item.Message + '</span></p>');
                         }
                     });
-                    setTimeout(getMessages, 1000);
+                    setTimeout(getMessages, 2000);
                 },
-                timeout: 1000
+                timeout: 7000
             });
         }
 

@@ -134,10 +134,6 @@
     box-shadow: 1px 1px 15px #041329;
 }
 
-.painel_log_cadastro {
-    /* position: absolute; */
-}
-
 .painel_log_login {
     position: absolute;
 }
@@ -218,60 +214,6 @@ h5.dropdown_btn {
 .btn_trasnc,
 .btn_recep {
     display: none;
-}
-
-@media screen and (min-width: 1040px)
-/*and (max-width: 1440px)*/
-
-{
-    .btn_pulp,
-    .btn_recep {
-        display: none;
-    }
-    .btn_trasnc {
-        display: inline-block;
-    }
-    .cont_mobile {
-        position: absolute;
-        width: 95%;
-        top: 35%;
-        margin: auto;
-        left: 10px;
-        right: 10px;
-    }
-}
-
-@media screen and (max-width: 1040px) and (min-width: 450px) {
-    .btn_trasnc,
-    .btn_recep {
-        display: none;
-    }
-    .btn_pulp {
-        display: inline-block;
-    }
-    .cont_mobile {
-        position: absolute;
-        width: 95%;
-        top: 35%;
-        margin: auto;
-        left: 10px;
-        right: 10px;
-    }
-}
-
-@media screen and (max-width: 450px) {
-    .btn_pulp,
-    .btn_trasnc {
-        display: none;
-    }
-    .btn_recep {
-        display: inline-block;
-    }
-    .cont_mobile {
-        position: absolute;
-        width: 100%;
-        top: 35%;
-    }
 }
 
 
@@ -547,4 +489,124 @@ h5.dropdown_btn {
     right: 0;
     z-index: 99;
     border-left: 3px solid #092c5b;
+}
+
+.close_mobile_chat {
+    display: none;
+}
+
+.btn_chat_mobile {
+    display: none;
+}
+
+.send_message_icon {
+    display: none;
+}
+
+@media screen and (min-width: 1040px)
+/*and (max-width: 1440px)*/
+
+{
+    .btn_pulp,
+    .btn_recep {
+        display: none;
+    }
+    .btn_trasnc {
+        display: inline-block;
+    }
+    .cont_mobile {
+        position: absolute;
+        width: 95%;
+        top: 35%;
+        margin: auto;
+        left: 10px;
+        right: 10px;
+    }
+}
+
+@media screen and (max-width: 1040px) and (min-width: 450px) {
+    .btn_trasnc,
+    .btn_recep {
+        display: none;
+    }
+    .btn_pulp {
+        display: inline-block;
+    }
+    .cont_mobile {
+        position: absolute;
+        width: 95%;
+        top: 35%;
+        margin: auto;
+        left: 10px;
+        right: 10px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .btn_pulp,
+    .btn_trasnc {
+        display: none;
+    }
+    .btn_recep {
+        display: inline-block;
+    }
+    .cont_mobile {
+        position: absolute;
+        width: 100%;
+        top: 35%;
+    }
+    /* chat */
+    .div_chat {
+        width: 100%;
+    }
+    .send_message_icon {
+        display: block;
+    }
+    .send_message_text {
+        display: none;
+    }
+    #btn_send {
+        width: 60px;
+        padding: 10px;
+        border-radius: 50px;
+    }
+    .btn_chat_on {
+        display: none;
+    }
+    .close_mobile_chat {
+        display: block;
+        top: 4px;
+        right: 10px;
+        bottom: auto;
+        font-size: 20pt;
+        background-color: transparent;
+        color: grey;
+        padding: 0;
+        position: fixed;
+        outline: none;
+        border: 0;
+    }
+    .btn_chat {
+        display: none;
+    }
+    .btn_chat_mobile {
+        display: block;
+        position: fixed;
+        background-color: black;
+        color: white;
+        bottom: 10px;
+        right: 10px;
+        padding: 10px 10px;
+        border-radius: 75px;
+        outline: none !important;
+        font-size: 20pt;
+        border: none;
+        z-index: 99;
+    }
+    #composer {
+        position: fixed;
+        width: 100%;
+        bottom: 0px;
+        left: 0;
+    }
 }

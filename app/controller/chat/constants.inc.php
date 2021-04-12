@@ -10,7 +10,5 @@ define('DB_PASSWORD',   '');
 define('DB_NAME',       'transc_bd');
 
 # Tabelas
-// Utilizadores do chat
-define('USERS',     'users');
 // Mensagens do chat
 define('MESSAGES',  'messages');
