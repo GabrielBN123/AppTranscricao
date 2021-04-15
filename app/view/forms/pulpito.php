@@ -98,7 +98,7 @@
                             </div>
                         </div>
                         <hr>
-                        <!-- <button class="col-md-12 col-lg-2 my-5 btn btn-primary btn-lg btn_form reload_btn">Atualizar <i class="fas fa-sync-alt"></i></button> -->
+                        <button class="col-md-12 col-lg-2 my-5 btn btn-primary btn-lg btn_form reload_btn">Atualizar <i class="fas fa-sync-alt"></i></button>
                         <!-- <button class="col-md-12 col-lg-2 btn btn-primary btn-lg btn_form">Próximo</button> -->
                     </div>
                 </div>

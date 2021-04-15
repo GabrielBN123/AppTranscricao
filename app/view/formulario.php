@@ -27,8 +27,15 @@
         include("forms/" . $this->carregaFormulario());
         ?>
     </div>
-    <button class="btn_chat btn_chat_func"><i class="far fa-comment-dots"></i></button>
-    <button class="btn_chat_mobile btn_chat_func_mobile"><i class="far fa-comment-dots"></i></button>
+    <?php
+    // echo 'teste: ' . $_SESSION['atuacao'];
+    if ($_SESSION['atuacao'] != '1') {
+        ?>
+        <button class="btn_chat btn_chat_func"><i class="far fa-comment-dots"></i></button>
+        <button class="btn_chat_mobile btn_chat_func_mobile"><i class="far fa-comment-dots"></i></button>
+        <?php
+    }
+    ?>
 
     <!--Footer-->
     <footer class="footer">

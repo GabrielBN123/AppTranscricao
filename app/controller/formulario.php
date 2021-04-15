@@ -68,22 +68,22 @@ class Formulario extends Conexao
     {
 
 
-            isset($_POST['apresentacao']) ? $this->form->setApresentacao($_POST['apresentacao']) : $this->form->setApresentacao(null);
-            isset($_POST['aviso']) ? $this->form->setAvisos($_POST['aviso']) : $this->form->setAvisos(null);
-            isset($_POST['cartaApp']) ? $this->form->setCartaApresentacao($_POST['cartaApp']) : $this->form->setCartaApresentacao(null);
-            isset($_POST['acaoGraca']) ? $this->form->setAcaoGraca($_POST['acaoGraca']) : $this->form->setAcaoGraca(null);
-            isset($_POST['pedidoOracao']) ? $this->form->setPedidoOracao($_POST['pedidoOracao']) : $this->form->setPedidoOracao(null);
-            isset($_POST['apresentacaoRN']) ? $this->form->setApresentaRN($_POST['apresentacaoRN']) : $this->form->setApresentaRN(null);
+        isset($_POST['apresentacao']) ? $this->form->setApresentacao($_POST['apresentacao']) : $this->form->setApresentacao(null);
+        isset($_POST['aviso']) ? $this->form->setAvisos($_POST['aviso']) : $this->form->setAvisos(null);
+        isset($_POST['cartaApp']) ? $this->form->setCartaApresentacao($_POST['cartaApp']) : $this->form->setCartaApresentacao(null);
+        isset($_POST['acaoGraca']) ? $this->form->setAcaoGraca($_POST['acaoGraca']) : $this->form->setAcaoGraca(null);
+        isset($_POST['pedidoOracao']) ? $this->form->setPedidoOracao($_POST['pedidoOracao']) : $this->form->setPedidoOracao(null);
+        isset($_POST['apresentacaoRN']) ? $this->form->setApresentaRN($_POST['apresentacaoRN']) : $this->form->setApresentaRN(null);
 
-            isset($_POST['felicitacao']) ? $this->form->setFelicitacao($_POST['felicitacao']) : $this->form->setPedidoLouvor(null);
-            isset($_POST['pedidoLouvor']) ? $this->form->setPedidoLouvor($_POST['pedidoLouvor']) : $this->form->setPedidoLouvor(null);
-            isset($_POST['pedidoComunhao']) ? $this->form->setPedidoComunhao($_POST['pedidoComunhao']) : $this->form->setPedidoComunhao(null);
+        isset($_POST['felicitacao']) ? $this->form->setFelicitacao($_POST['felicitacao']) : $this->form->setPedidoLouvor(null);
+        isset($_POST['pedidoLouvor']) ? $this->form->setPedidoLouvor($_POST['pedidoLouvor']) : $this->form->setPedidoLouvor(null);
+        isset($_POST['pedidoComunhao']) ? $this->form->setPedidoComunhao($_POST['pedidoComunhao']) : $this->form->setPedidoComunhao(null);
 
 
-            $this->form->setFormID($_POST['formID']);
-            $this->form->setUsuarioAlteradoID($_POST['transc_usuarioID']);
+        $this->form->setFormID($_POST['formID']);
+        $this->form->setUsuarioAlteradoID($_POST['transc_usuarioID']);
 
-            $this->form->salvaAlteracaoFormulario();
+        $this->form->salvaAlteracaoFormulario();
     }
 
     public function logout()
@@ -147,8 +147,9 @@ class Formulario extends Conexao
                 $this->logout();
             }
         }
-
-        $this->chat();
+        if ($this->atuacao_usuario != '1') {
+            $this->chat();
+        }
 
         include($this->loader->loadViewBase() . "app/view/$pagina");
     }
